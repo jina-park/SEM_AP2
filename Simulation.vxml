@@ -1,0 +1,2573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<vxml:Document xmlns:vxml="http://www.vms-solutions.com/mozart/vxml/2012/1" xmlns:def="definitions" xmlns:ref="references" ContentType="femap" ContentKey="Simulation/Simulation" xmlns="Mozart.Task.Execution.Design, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csd="clr-namespace:Mozart.SeePlan.Design.Statistics;assembly:Mozart.SeePlan.Design, Version=2021.120.3.9, Culture=neutral, PublicKeyToken=null" xmlns:csd2="clr-namespace:Mozart.SeePlan.Design;assembly:Mozart.SeePlan.Design, Version=2021.120.3.9, Culture=neutral, PublicKeyToken=null">
+  <Content>
+    <FActionMap Name="Simulation" InstanceName="Simulation">
+      <Definitions Capacity="32">
+        <FDefinitionCategory Name="-Predefined-">
+          <Children Capacity="56">
+            <FDefinitionEntry Name="ADD_BUCKET_MOVE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="AddBucketMove" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="ADD_BUCKET_MOVE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ADD_DISPATCH_WIP_LOG_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="AddDispatchWipLog" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="ADD_DISPATCH_WIP_LOG_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="ADD_DISPATCH_WIP_LOG1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="ADD_DISPATCH_WIP_LOG1" />
+                          </Code>
+                          <ReferenceAction ref:name="AddDispatchWipLog" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ADD_WORK_LOT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="AddWorkLot" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="ADD_WORK_LOT_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="ADD_WORK_LOT1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="ADD_WORK_LOT1" />
+                          </Code>
+                          <ReferenceAction ref:name="AddWorkLot" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ATTACH_TOOL_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="AttachTool" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="ATTACH_TOOL_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="BUCKET_ROLLING_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="BucketRolling" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="BUCKET_ROLLING_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CAN_UP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CanUp" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="CAN_UP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_LOT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CompareLot" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="COMPARE_LOT_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_PROFILE_EQP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CompareProfileEqp" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="COMPARE_PROFILE_EQP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_UP_STEP_PRIORITY_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CompareUpStep" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="COMPARE_UP_STEP_PRIORITY_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="COMPARE_UP_STEP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="COMPARE_UP_STEP1" />
+                          </Code>
+                          <ReferenceAction ref:name="CompareUpStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_WIP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CompareWip" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="COMPARE_WIP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CREATE_DUMMY_WORK_LOT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CreateDummyWorkLot" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="CREATE_DUMMY_WORK_LOT_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="DETACH_TOOL_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="DetachTool" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="DETACH_TOOL_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="DO_FILTER_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="DoFilter" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="DO_FILTER_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="DO_FILTER1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\FilterControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FilterControl" MethodName="DO_FILTER1" />
+                          </Code>
+                          <ReferenceAction ref:name="DoFilter" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference Disabled="True">
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_DECISION_LOG" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\FilterControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FilterControl" MethodName="WRITE_DECISION_LOG" />
+                          </Code>
+                          <ReferenceAction ref:name="DoFilter" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="DO_RESERVE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="DoReserve" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="DO_RESERVE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="DO_SELECT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="DoSelect" Order="3" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="DO_SELECT_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference Disabled="True">
+                      <Definition>
+                        <FDefinitionEntry Name="DO_SELECT_RL" def:name="$attr:Name">
+                          <ReferenceAction ref:name="DoSelect" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="DO_SELECT0" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="DO_SELECT0" />
+                          </Code>
+                          <ReferenceAction ref:name="DoSelect" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="DO_SELECT_RL" />
+            <FDefinitionEntry Name="EVALUATE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="Evaluate" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="EVALUATE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="FIX_BATCH_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="FixBatch" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="FIX_BATCH_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="FIX_START_TIME_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="FixStartTime">
+                  <Children Capacity="2">
+                    <FDefinitionReference>
+                      <Definition ref:name="FIX_START_TIME_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_BUCKET_INPUT_DELAY_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetBucketInputDelay" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_BUCKET_INPUT_DELAY_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_DISPATCHER_TYPE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetDispatcherType" Order="2" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_DISPATCHER_TYPE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_EQP_SIM_TYPE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetEqpSimType" Order="3" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_EQP_SIM_TYPE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_LAST_TOOL_SETTINGS_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetLastToolSettings" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LAST_TOOL_SETTINGS_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_LOADABLE_CHAMBERS_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetLoadableChambers" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LOADABLE_CHAMBERS_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_NEXT_STEP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetNextStep" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="GET_NEXT_STEP_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="WC_WT_PRODUCT_CHANGE" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="WC_WT_PRODUCT_CHANGE" />
+                          </Code>
+                          <ReferenceAction ref:name="GetNextStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="GET_NEXT_STEP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="GET_NEXT_STEP1" />
+                          </Code>
+                          <ReferenceAction ref:name="GetNextStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="UPDATE_WORK_LOT" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="UPDATE_WORK_LOT" />
+                          </Code>
+                          <ReferenceAction ref:name="GetNextStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_PROCESS_UNIT_SIZE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetProcessUnitSize" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="GET_PROCESS_UNIT_SIZE_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="GET_PROCESS_UNIT_SIZE1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="GET_PROCESS_UNIT_SIZE1" />
+                          </Code>
+                          <ReferenceAction ref:name="GetProcessUnitSize" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_SELECTED_WIP_LOG_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetSelectedWipLog" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_SELECTED_WIP_LOG_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_SETUP_CREW_KEY_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetSetupCrewKey" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_SETUP_CREW_KEY_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_TRANSFER_TIME_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="GetTransferTime" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="GET_TRANSFER_TIME_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="GET_TRANSFER_TIME1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\TransferControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="TransferControl" MethodName="GET_TRANSFER_TIME1" />
+                          </Code>
+                          <ReferenceAction ref:name="GetTransferTime" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_WORK_MANAGER_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="InitializeWorkManager" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="INITIALIZE_WORK_MANAGER_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="INITIALIZE_WORK_MANAGER1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="INITIALIZE_WORK_MANAGER1" />
+                          </Code>
+                          <ReferenceAction ref:name="InitializeWorkManager" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_WORK_STEP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="InitializeWorkStep" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="INITIALIZE_WORK_STEP_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="INITIALIZE_WORK_STEP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="INITIALIZE_WORK_STEP1" />
+                          </Code>
+                          <ReferenceAction ref:name="InitializeWorkStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_DONE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsDone" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_DONE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_NEED_DOWN_STEP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsNeedDownStep" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_NEED_DOWN_STEP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_NEED_UP_STEP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsNeedUpStep" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_NEED_UP_STEP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_READY_TOOL_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsReadyTool" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_READY_TOOL_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_VALID_TOOL_INFO_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsValidToolInfo" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_VALID_TOOL_INFO_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IsBatchType" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="IsBatchType" Order="1" def:name="IsBatchType1">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="IsBatchType" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="LOCATE_FOR_DISPATCH_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="LocateForDispatch" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="LOCATE_FOR_DISPATCH_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference Disabled="True">
+                      <Definition>
+                        <FDefinitionEntry Name="LOT_ARRANGE_RESTRICTION" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="LOT_ARRANGE_RESTRICTION" />
+                          </Code>
+                          <ReferenceAction ref:name="LocateForDispatch" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="LOCATE_FOR_DISPATCH2" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="LOCATE_FOR_DISPATCH2" />
+                          </Code>
+                          <ReferenceAction ref:name="LocateForDispatch" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference Disabled="True">
+                      <Definition>
+                        <FDefinitionEntry Name="LOCATE_FOR_DISPATCH3" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="LOCATE_FOR_DISPATCH3" />
+                          </Code>
+                          <ReferenceAction ref:name="LocateForDispatch" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="LOCATE_FOR_RUN_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="LocateForRun" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="LOCATE_FOR_RUN_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="LOCATE_FOR_RUN1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="LOCATE_FOR_RUN1" />
+                          </Code>
+                          <ReferenceAction ref:name="LocateForRun" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="MODIFY_DOWN_SCHEDULE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="ModifyDownSchedule" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="MODIFY_DOWN_SCHEDULE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_DELIVERED_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="OnDelivered" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_DELIVERED_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_FAILURE_EVENT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="OnFailureEvent" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_FAILURE_EVENT_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_PM_EVENT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="OnPMEvent" def:name="$attr:Name">
+                  <Children Capacity="6">
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="PM_PREVENT_LOADING_DEF" def:name="$attr:Name">
+                          <ReferenceAction ref:name="OnPMEvent" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="PM_PREVENT_PROCESSING_DEF" def:name="$attr:Name">
+                          <ReferenceAction ref:name="OnPMEvent" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_PM_EVENT_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_PM_OPER_PLAN" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DownControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DownControl" MethodName="WRITE_PM_OPER_PLAN" />
+                          </Code>
+                          <ReferenceAction ref:name="OnPMEvent" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="PM_PREVENT_LOADING_DEF" />
+            <FDefinitionEntry ref:name="PM_PREVENT_PROCESSING_DEF" />
+            <FDefinitionEntry Name="RESERVE_ONE_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="ReserveOne" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="RESERVE_ONE_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SELECT_ASSIGN_EQP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SelectAssignEqp" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="SELECT_ASSIGN_EQP_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SELECT_ASSIGN_EQP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="SELECT_ASSIGN_EQP1" />
+                          </Code>
+                          <ReferenceAction ref:name="SelectAssignEqp" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SELECT_BY_WEIGHT_OPTIMIZER_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="Select" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SELECT_DEF" def:name="$attr:Name">
+                          <ReferenceAction ref:name="Select" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition ref:name="SELECT_BY_WEIGHT_OPTIMIZER_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="ONE_DAY_CAPA_SPLIT" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="ONE_DAY_CAPA_SPLIT" />
+                          </Code>
+                          <ReferenceAction ref:name="Select" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="SELECT_DEF" />
+            <FDefinitionEntry Name="SELECT_DOWN_EQP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SelectDownEqp" def:name="SelectDownEqp1">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="SELECT_DOWN_EQP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SELECT_DOWN_EQP_T_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SelectDownEqp" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="SELECT_DOWN_EQP_T_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SELECT_DOWN_EQP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="SELECT_DOWN_EQP1" />
+                          </Code>
+                          <ReferenceAction ref:name="SelectDownEqp" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SELECT_PROFILE_EQP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SelectProfileEqp" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="SELECT_PROFILE_EQP_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SELECT_UP_STEP_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SelectUpStep" def:name="$attr:Name">
+                  <Children Capacity="2">
+                    <FDefinitionReference>
+                      <Definition ref:name="SELECT_UP_STEP_DEF" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SELECT_UP_STEP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="SELECT_UP_STEP1" />
+                          </Code>
+                          <ReferenceAction ref:name="SelectUpStep" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SET_LAST_LOADING_INFO_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SetLastLoadingInfo" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="SET_LAST_LOADING_INFO_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SORT_LOT_GROUP_CONTENTS_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SortLotGroupContents" Order="8" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="SORT_LOT_GROUP_CONTENTS_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SORT_PROFILE_LOT_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="SortProfileLot" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="SORT_PROFILE_LOT_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="EqpInit">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_EQP_LIST0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\EqpInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="EqpInit" MethodName="GET_EQP_LIST0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetEqpList" Order="1" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_EQP_LIST0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_EQUIPMENT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\EqpInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="EqpInit" MethodName="INITIALIZE_EQUIPMENT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="InitializeEquipment" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="INITIALIZE_EQUIPMENT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="FactoryInit">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_WEIGHT_PRESETS0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FactoryInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryInit" MethodName="GET_WEIGHT_PRESETS0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWeightPresets" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WEIGHT_PRESETS0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_WIP_GROUP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FactoryInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryInit" MethodName="INITIALIZE_WIP_GROUP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="InitializeWipGroup" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="INITIALIZE_WIP_GROUP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="FactoryEvents">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="ON_BEGIN_INITIALIZE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FactoryEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryEvents" MethodName="ON_BEGIN_INITIALIZE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnBeginInitialize" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_BEGIN_INITIALIZE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_DONE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FactoryEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryEvents" MethodName="ON_DONE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnDone" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_DONE0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_DELAY_SHORT_REPORT" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\FactoryEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryEvents" MethodName="WRITE_DELAY_SHORT_REPORT" />
+                          </Code>
+                          <ReferenceAction ref:name="OnDone" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_SHIFT_CHANGE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FactoryEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FactoryEvents" MethodName="ON_SHIFT_CHANGE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnShiftChange" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_SHIFT_CHANGE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="WRITE_DELAY_SHORT_REPORT" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="WipInit">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="CHECK_TRACK_OUT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="CHECK_TRACK_OUT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CheckTrackOut" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="CHECK_TRACK_OUT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="FIX_START_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="FIX_START_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="FixStartTime" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="FIX_START_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_LOADING_EQUIPMENT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="GET_LOADING_EQUIPMENT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetLoadingEquipment" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LOADING_EQUIPMENT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WIPS0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="GET_WIPS0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWips" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WIPS0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="LINK_LOT_DEMAND" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="LINK_LOT_DEMAND" />
+                          </Code>
+                          <ReferenceAction ref:name="GetWips" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SORT_ONLY_LOT_ARRANGE_WIPS" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="SORT_ONLY_LOT_ARRANGE_WIPS" />
+                          </Code>
+                          <ReferenceAction ref:name="GetWips" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SET_SAME_LOT_INFO" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="SET_SAME_LOT_INFO" />
+                          </Code>
+                          <ReferenceAction ref:name="GetWips" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="LINK_LOT_DEMAND" />
+            <FDefinitionEntry ref:name="LOCATE_FOR_DISPATCH2" />
+            <FDefinitionEntry ref:name="LOCATE_FOR_DISPATCH3" />
+            <FDefinitionEntry ref:name="LOCATE_FOR_RUN1" />
+            <FDefinitionEntry ref:name="LOT_ARRANGE_RESTRICTION" />
+            <FDefinitionEntry Name="ON_BEGIN_INIT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="ON_BEGIN_INIT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnBeginInit" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_BEGIN_INIT0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="ON_BEGIN_INIT1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="ON_BEGIN_INIT1" />
+                          </Code>
+                          <ReferenceAction ref:name="OnBeginInit" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="ON_BEGIN_INIT1" />
+            <FDefinitionEntry Name="ON_END_INIT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\WipInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="WipInit" MethodName="ON_END_INIT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnEndInit" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_END_INIT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="SET_SAME_LOT_INFO" />
+            <FDefinitionEntry ref:name="SORT_ONLY_LOT_ARRANGE_WIPS" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Route">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="CREATE_LOAD_INFO0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="CREATE_LOAD_INFO0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CreateLoadInfo" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition>
+                        <FDefinitionEntry Name="PRODUCT_CHANGE" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="PRODUCT_CHANGE" />
+                          </Code>
+                          <ReferenceAction ref:name="CreateLoadInfo" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition ref:name="CREATE_LOAD_INFO0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_LOADABLE_EQP_LIST0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="GET_LOADABLE_EQP_LIST0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetLoadableEqpList" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LOADABLE_EQP_LIST0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="GET_NEXT_STEP1" />
+            <FDefinitionEntry ref:name="WC_WT_PRODUCT_CHANGE" />
+            <FDefinitionEntry Name="MULTI_LOT_PROD_CHANGE" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="MULTI_LOT_PROD_CHANGE" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnDispatchIn" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="PROUDUCT_CHANGE" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="PROUDUCT_CHANGE" />
+                          </Code>
+                          <ReferenceAction ref:name="OnDispatchIn" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition ref:name="MULTI_LOT_PROD_CHANGE" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_DONE0" def:name="ON_DONE01">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="ON_DONE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnDone" def:name="OnDone1">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_DONE01" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_END_TASK0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="ON_END_TASK0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnEndTask" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_END_TASK0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_START_TASK0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Route" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Route" MethodName="ON_START_TASK0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnStartTask" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_START_TASK0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="PRODUCT_CHANGE" />
+            <FDefinitionEntry ref:name="PROUDUCT_CHANGE" />
+            <FDefinitionEntry ref:name="UPDATE_WORK_LOT" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="TransferControl">
+          <Children Capacity="4">
+            <FDefinitionEntry ref:name="GET_TRANSFER_TIME1" />
+            <FDefinitionEntry Name="ON_TRANSFERED0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\TransferControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="TransferControl" MethodName="ON_TRANSFERED0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnTransfered" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_TRANSFERED0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="QueueControl">
+          <Children Capacity="8">
+            <FDefinitionEntry Name="GET_HOLD_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="GET_HOLD_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetHoldTime" Order="3" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_HOLD_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INTERCEPT_IN0" def:name="$attr:Name" Description="">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="INTERCEPT_IN0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="InterceptIn" Order="4" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="INTERCEPT_IN0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_BUCKET_PROCESSING0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="IS_BUCKET_PROCESSING0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="IsBucketProcessing" Order="5" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_BUCKET_PROCESSING0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_HOLD0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="IS_HOLD0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="IsHold" Order="2" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_HOLD0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_HOLD_EXIT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="ON_HOLD_EXIT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnHoldExit" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_HOLD_EXIT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_NOT_FOUND_DESTINATION0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\QueueControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="QueueControl" MethodName="ON_NOT_FOUND_DESTINATION0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnNotFoundDestination" Order="7" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_NOT_FOUND_DESTINATION0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="ProcessControl">
+          <Children Capacity="8">
+            <FDefinitionEntry Name="GET_PROCESS_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="GET_PROCESS_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetProcessTime" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_PROCESS_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="GET_PROCESS_UNIT_SIZE1" />
+            <FDefinitionEntry Name="IS_NEED_SETUP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="IS_NEED_SETUP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="IsNeedSetup" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_NEED_SETUP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_ENTERED0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="ON_ENTERED0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnEntered" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_ENTERED0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_TRACK_IN0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="ON_TRACK_IN0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnTrackIn" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_TRACK_IN0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_TRACK_OUT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\ProcessControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="ProcessControl" MethodName="ON_TRACK_OUT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnTrackOut" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_TRACK_OUT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="BucketControl">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_BUCKET_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\BucketControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="BucketControl" MethodName="GET_BUCKET_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetBucketTime" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_BUCKET_TIME0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_OPER_PLAN" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\BucketControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="BucketControl" MethodName="WRITE_OPER_PLAN" />
+                          </Code>
+                          <ReferenceAction ref:name="GetBucketTime" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="WRITE_OPER_PLAN" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="DispatcherControl">
+          <Children Capacity="8">
+            <FDefinitionEntry ref:name="ADD_DISPATCH_WIP_LOG1" />
+            <FDefinitionEntry ref:name="DO_SELECT0" />
+            <FDefinitionEntry Name="GET_LOT_BATCH_TYPE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="GET_LOT_BATCH_TYPE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetLotBatchType" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LOT_BATCH_TYPE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_WRITE_DISPATCH_LOG0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="IS_WRITE_DISPATCH_LOG0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="IsWriteDispatchLog" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="IS_WRITE_DISPATCH_LOG0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_DISPATCHED0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="ON_DISPATCHED0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnDispatched" Order="5" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_DISPATCHED0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="ONE_DAY_CAPA_SPLIT" />
+            <FDefinitionEntry Name="WRITE_DISPATCH_LOG0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\DispatcherControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DispatcherControl" MethodName="WRITE_DISPATCH_LOG0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="WriteDispatchLog" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="WRITE_DISPATCH_LOG0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Weights">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="ARRANGE_PRIORITY" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="ARRANGE_PRIORITY" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="JOB_CHANGE_PRIORITY" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="JOB_CHANGE_PRIORITY" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="LOT_QTY_PRIORITY" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="LOT_QTY_PRIORITY" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="REEL_LABEL" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="REEL_LABEL" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="RES_FIX" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="RES_FIX" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SAME_LOT" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="SAME_LOT" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="STEP_TARGET_PRIORITY" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="STEP_TARGET_PRIORITY" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="URGENT" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="URGENT" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="WAIT_PRIORITY" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Weights" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Weights" MethodName="WAIT_PRIORITY" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="EqpEvents">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="WRITE_OPER_PLAN" def:name="WRITE_OPER_PLAN1">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\EqpEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="EqpEvents" MethodName="WRITE_OPER_PLAN" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="LoadingStateChanged" Order="2" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="WRITE_OPER_PLAN1" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Statistics_WriteOperPlan">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="ON_STATE_CHANGED">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_WriteOperPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_WriteOperPlan" MethodName="ON_STATE_CHANGED" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="BucketEvents" />
+        <FDefinitionCategory Name="SetupControl">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_SETUP_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\SetupControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="SetupControl" MethodName="GET_SETUP_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetSetupTime" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_SETUP_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_BEGIN_SETUP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\SetupControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="SetupControl" MethodName="ON_BEGIN_SETUP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnBeginSetup" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_BEGIN_SETUP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Statistics_OperPlan">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="ON_STATE_CHANGED">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_OperPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_OperPlan" MethodName="ON_STATE_CHANGED" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_TRACK_IN">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_OperPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_OperPlan" MethodName="ON_TRACK_IN" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Statistics_eq">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="ON_STATE_CHANGED">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_eq" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_eq" MethodName="ON_STATE_CHANGED" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Statistics_EqpPlan">
+          <Children Capacity="8">
+            <FDefinitionEntry Name="INITIALIZE_ROW">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_EqpPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_EqpPlan" MethodName="INITIALIZE_ROW" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_STATE_CHANGED">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_EqpPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_EqpPlan" MethodName="ON_STATE_CHANGED" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_TRACK_OUT">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\Statistics_EqpPlan" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="Statistics_EqpPlan" MethodName="ON_TRACK_OUT" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="DownControl">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_PM_LIST" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\DownControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DownControl" MethodName="GET_PM_LIST" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetPMList" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_PM_LIST" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="GET_CAPA_CAL_DOWN_LIST" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DownControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DownControl" MethodName="GET_CAPA_CAL_DOWN_LIST" />
+                          </Code>
+                          <ReferenceAction ref:name="GetPMList" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="GET_HOLIDAY_DOWN_LIST" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\DownControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="DownControl" MethodName="GET_HOLIDAY_DOWN_LIST" />
+                          </Code>
+                          <ReferenceAction ref:name="GetPMList" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="GET_CAPA_CAL_DOWN_LIST" />
+            <FDefinitionEntry ref:name="GET_HOLIDAY_DOWN_LIST" />
+            <FDefinitionEntry ref:name="WRITE_PM_OPER_PLAN" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="FilterControl">
+          <Children Capacity="4">
+            <FDefinitionEntry ref:name="DO_FILTER1" />
+            <FDefinitionEntry ref:name="WRITE_DECISION_LOG" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="FilterControl">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="CHECK_RESERVATION0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\FilterControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="FilterControl" MethodName="CHECK_RESERVATION0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CheckReservation" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="CHECK_RESERVATION0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="AgentInit">
+          <Children Capacity="16">
+            <FDefinitionEntry ref:name="ADD_WORK_LOT1" />
+            <FDefinitionEntry Name="GET_AVAILABLE_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_AVAILABLE_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetAvailableTime" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_AVAILABLE_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_LOADABLE_EQPS0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_LOADABLE_EQPS0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetLoadableEqps" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_LOADABLE_EQPS0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_TARGET_STEP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_TARGET_STEP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetTargetStep" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_TARGET_STEP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WORK_AGENT_NAME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_WORK_AGENT_NAME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWorkAgentName" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WORK_AGENT_NAME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WORK_AGENT_NAMES0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_WORK_AGENT_NAMES0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWorkAgentNames" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WORK_AGENT_NAMES0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WORK_GROUP_KEY0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_WORK_GROUP_KEY0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWorkGroupKey" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WORK_GROUP_KEY0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WORK_STEP_KEY0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="GET_WORK_STEP_KEY0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWorkStepKey" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_WORK_STEP_KEY0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_AGENT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="INITIALIZE_AGENT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="InitializeAgent" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="INITIALIZE_AGENT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="INITIALIZE_WORK_GROUP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\AgentInit" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="AgentInit" MethodName="INITIALIZE_WORK_GROUP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="InitializeWorkGroup" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="INITIALIZE_WORK_GROUP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="INITIALIZE_WORK_MANAGER1" />
+            <FDefinitionEntry ref:name="INITIALIZE_WORK_STEP1" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="JobChangeEvents">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="ADD_LOADED_EQP" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ADD_LOADED_EQP" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnStartWorkAgent" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ADD_LOADED_EQP" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_INIT_LOG" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="WRITE_INIT_LOG" />
+                          </Code>
+                          <ReferenceAction ref:name="OnStartWorkAgent" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SORT_JOB_GROUP" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="SORT_JOB_GROUP" />
+                          </Code>
+                          <ReferenceAction ref:name="OnStartWorkAgent" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CLASSIFY_DECISION_TYPE_BY_JOB_GROUP" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="CLASSIFY_DECISION_TYPE_BY_JOB_GROUP" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnBeforeRun" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="ON_BEFORE_PROFILE" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ON_BEFORE_PROFILE" />
+                          </Code>
+                          <ReferenceAction ref:name="OnBeforeRun" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="PROFILE_JOB_GROUP" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="PROFILE_JOB_GROUP" />
+                          </Code>
+                          <ReferenceAction ref:name="OnBeforeRun" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition ref:name="CLASSIFY_DECISION_TYPE_BY_JOB_GROUP" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_AFTER_ASSIGN_EQP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ON_AFTER_ASSIGN_EQP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnAfterAssignEqp" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_AFTER_ASSIGN_EQP0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="RE_PROFILE_UP_GROUP" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="RE_PROFILE_UP_GROUP" />
+                          </Code>
+                          <ReferenceAction ref:name="OnAfterAssignEqp" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ASSIGN_DOWN_EQP" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ASSIGN_DOWN_EQP" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnAfterRun" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ASSIGN_DOWN_EQP" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_AFTER_UNASSIGN_EQP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ON_AFTER_UNASSIGN_EQP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnAfterUnassignEqp" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_AFTER_UNASSIGN_EQP0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="RE_PROFILE_DOWN_GROUP" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="RE_PROFILE_DOWN_GROUP" />
+                          </Code>
+                          <ReferenceAction ref:name="OnAfterUnassignEqp" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="ON_BEFORE_PROFILE" />
+            <FDefinitionEntry Name="ON_CALCULATE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="ON_CALCULATE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnCalculate" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_CALCULATE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GROUPPING_EQP_BY_LAST_JOB_COND">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobChangeEvents" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobChangeEvents" MethodName="GROUPPING_EQP_BY_LAST_JOB_COND" />
+              </Code>
+              <ReferenceAction ref:name="OnStartWorkAgent" />
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="PROFILE_JOB_GROUP" />
+            <FDefinitionEntry ref:name="RE_PROFILE_DOWN_GROUP" />
+            <FDefinitionEntry ref:name="RE_PROFILE_UP_GROUP" />
+            <FDefinitionEntry ref:name="SORT_JOB_GROUP" />
+            <FDefinitionEntry ref:name="WRITE_INIT_LOG" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="JobProfileControl">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="ADVANCE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="ADVANCE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="Advance" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ADVANCE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_PROFILE_STEP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="COMPARE_PROFILE_STEP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CompareProfileStep" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="COMPARE_PROFILE_STEP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="DO_FILTER_LOT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="DO_FILTER_LOT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="DoFilterLot" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="DO_FILTER_LOT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="RETURN_NULL" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="RETURN_NULL" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="FilterProfileSteps" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="RETURN_NULL" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_MAPPING_LOT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="GET_MAPPING_LOT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetMappingLot" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_MAPPING_LOT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_PROFILE_TIMES0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="GET_PROFILE_TIMES0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetProfileTimes" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_PROFILE_TIMES0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_TACT_TIME0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="GET_TACT_TIME0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetTactTime" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="GET_TACT_TIME0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ON_BEGIN_PROFILING0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="ON_BEGIN_PROFILING0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="OnBeginProfiling" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="ON_BEGIN_PROFILING0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="UPDATE_FIND_STEP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="UPDATE_FIND_STEP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="UpdateFindStep" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="UPDATE_FIND_STEP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="UPDATE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobProfileControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobProfileControl" MethodName="UPDATE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="Update" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="UPDATE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="JobTradeControl">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="CALCULATE_PRIORITY0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="CALCULATE_PRIORITY0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CalculatePriority" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="CALCULATE_PRIORITY0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CAN_ASSIGN_MORE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="CAN_ASSIGN_MORE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CanAssignMore" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="CAN_ASSIGN_MORE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CLASSIFY_OPERATION_TYPE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="CLASSIFY_OPERATION_TYPE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="ClassifyOperationType" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="CLASSIFY_OPERATION_TYPE0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference>
+                      <Definition>
+                        <FDefinitionEntry Name="SET_DOWN_EQP" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="SET_DOWN_EQP" />
+                          </Code>
+                          <ReferenceAction ref:name="ClassifyOperationType" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPARE_ASSIGN_EQP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="COMPARE_ASSIGN_EQP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CompareAssignEqp" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True">
+                      <Definition ref:name="COMPARE_ASSIGN_EQP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="COMPARE_UP_STEP1" />
+            <FDefinitionEntry Name="DO_FILTER_ASSIGN_EQP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Simulation\JobTradeControl" NamespaceName="SEM_AREA.Logic.Simulation" ClassName="JobTradeControl" MethodName="DO_FILTER_ASSIGN_EQP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="DoFilterAssignEqp" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="DO_FILTER_ASSIGN_EQP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="SELECT_ASSIGN_EQP1" />
+            <FDefinitionEntry ref:name="SELECT_DOWN_EQP1" />
+            <FDefinitionEntry ref:name="SELECT_UP_STEP1" />
+            <FDefinitionEntry ref:name="SET_DOWN_EQP" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="JobChangeControl" />
+      </Definitions>
+      <Children Capacity="13">
+        <FActionCategory Name="Factory">
+          <Children Capacity="4">
+            <FActionComponent Name="EqpInit">
+              <Option />
+              <Children Capacity="6">
+                <FActionEntry ref:name="GetEqpList" />
+                <FActionEntry ref:name="GetDispatcherType" />
+                <FActionEntry ref:name="GetEqpSimType" />
+                <FActionEntry ref:name="InitializeEquipment" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="FactoryInit">
+              <Option />
+              <Children Capacity="6">
+                <FActionEntry ref:name="GetWeightPresets" />
+                <FActionEntry ref:name="InitializeWipGroup" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="FactoryEvents">
+              <Option />
+              <Children Capacity="10">
+                <FActionEntry ref:name="OnBeginInitialize" />
+                <FActionEntry ref:name="OnShiftChange" />
+                <FActionEntry ref:name="OnDone" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="Entity">
+          <Children Capacity="6">
+            <FActionComponent Name="WipInit">
+              <Option />
+              <Children Capacity="15">
+                <FActionEntry ref:name="GetWips" />
+                <FActionEntry ref:name="OnBeginInit" />
+                <FActionEntry ref:name="CompareWip" />
+                <FActionEntry ref:name="LocateForDispatch" />
+                <FActionEntry ref:name="LocateForRun" />
+                <FActionEntry ref:name="GetLoadingEquipment" />
+                <FActionEntry ref:name="CheckTrackOut" />
+                <FActionEntry ref:name="FixBatch" />
+                <FActionEntry ref:name="FixStartTime" />
+                <FActionEntry ref:name="OnEndInit" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="InputBatchInit">
+              <Option />
+              <Children Capacity="6">
+                <FActionEntry ref:name="CompareLot" />
+                <FActionEntry ref:name="DoReserve" />
+                <FActionEntry ref:name="ReserveOne" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="Route">
+              <Option />
+              <Children Capacity="21">
+                <FActionEntry ref:name="OnDispatchIn" />
+                <FActionEntry ref:name="GetLoadableEqpList" />
+                <FActionEntry ref:name="OnStartTask" />
+                <FActionEntry ref:name="OnEndTask" />
+                <FActionEntry ref:name="GetNextStep" />
+                <FActionEntry ref:name="CreateLoadInfo" />
+                <FActionEntry ref:name="IsDone" />
+                <FActionEntry ref:name="OnDone1" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="Transfer">
+          <Children Capacity="2">
+            <FActionComponent Name="TransferControl">
+              <Option />
+              <Children Capacity="4">
+                <FActionEntry ref:name="GetTransferTime" />
+                <FActionEntry ref:name="OnTransfered" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="TransferSystemInterface">
+              <Option />
+              <Children Capacity="3">
+                <FActionEntry ref:name="OnDelivered" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="Dispatching">
+          <Children Capacity="3">
+            <FActionComponent Name="QueueControl" Order="1">
+              <Option />
+              <Children Capacity="9">
+                <FActionEntry ref:name="IsHold" />
+                <FActionEntry ref:name="GetHoldTime" />
+                <FActionEntry ref:name="OnHoldExit" />
+                <FActionEntry ref:name="InterceptIn" />
+                <FActionEntry ref:name="IsBucketProcessing" />
+                <FActionEntry ref:name="OnNotFoundDestination" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="FilterControl" Order="2">
+              <Option />
+              <Children Capacity="7">
+                <FActionEntry ref:name="CheckReservation" />
+                <FActionEntry ref:name="DoFilter" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="DispatcherControl" Order="3">
+              <Option />
+              <Children Capacity="14">
+                <FActionEntry ref:name="SortLotGroupContents" />
+                <FActionEntry ref:name="GetLotBatchType" />
+                <FActionEntry ref:name="DoSelect" />
+                <FActionEntry ref:name="Evaluate" />
+                <FActionEntry ref:name="Select" />
+                <FActionEntry ref:name="IsWriteDispatchLog" />
+                <FActionEntry ref:name="AddDispatchWipLog" />
+                <FActionEntry ref:name="GetSelectedWipLog" />
+                <FActionEntry ref:name="WriteDispatchLog" />
+                <FActionEntry ref:name="OnDispatched" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="Equipment">
+          <Children Capacity="5">
+            <FActionComponent Name="ProcessControl">
+              <Option />
+              <Children Capacity="14">
+                <FActionEntry ref:name="OnTrackIn" />
+                <FActionEntry ref:name="IsNeedSetup" />
+                <FActionEntry ref:name="GetProcessTime" />
+                <FActionEntry ref:name="GetProcessUnitSize" />
+                <FActionEntry ref:name="GetLoadableChambers" />
+                <FActionEntry ref:name="OnEntered" />
+                <FActionEntry ref:name="OnTrackOut" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="SetupControl">
+              <Option />
+              <Children Capacity="9">
+                <FActionEntry ref:name="GetSetupCrewKey" />
+                <FActionEntry ref:name="GetSetupTime" />
+                <FActionEntry ref:name="SetLastLoadingInfo" />
+                <FActionEntry ref:name="OnBeginSetup" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="DownControl">
+              <Option />
+              <Children Capacity="5">
+                <FActionEntry ref:name="GetPMList" />
+                <FActionEntry ref:name="OnPMEvent" />
+                <FActionEntry ref:name="OnFailureEvent" />
+                <FActionEntry ref:name="ModifyDownSchedule" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="Misc">
+              <Option />
+              <Children Capacity="7">
+                <FActionEntry ref:name="IsBatchType1" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="EqpEvents">
+              <Option />
+              <Children Capacity="5">
+                <FActionEntry ref:name="LoadingStateChanged" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="Bucketing">
+          <Children Capacity="2">
+            <FActionComponent Name="BucketControl">
+              <Option />
+              <Children Capacity="17">
+                <FActionEntry ref:name="AddBucketMove" />
+                <FActionEntry ref:name="GetBucketTime" />
+                <FActionEntry ref:name="GetBucketInputDelay" />
+                <FActionEntry ref:name="BucketRolling" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="SecondResource">
+          <Children Capacity="2">
+            <FActionComponent Name="ToolControl">
+              <Option />
+              <Children Capacity="11">
+                <FActionEntry ref:name="GetLastToolSettings" />
+                <FActionEntry ref:name="IsValidToolInfo" />
+                <FActionEntry ref:name="IsReadyTool" />
+                <FActionEntry ref:name="AttachTool" />
+                <FActionEntry ref:name="DetachTool" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FActionCategory Name="JobChangeAgent">
+          <Children Capacity="5">
+            <FActionComponent Name="AgentInit">
+              <Option />
+              <Children Capacity="16">
+                <FActionEntry ref:name="InitializeWorkManager" />
+                <FActionEntry ref:name="GetWorkAgentNames" />
+                <FActionEntry ref:name="InitializeAgent" />
+                <FActionEntry ref:name="AddWorkLot" />
+                <FActionEntry ref:name="GetWorkAgentName" />
+                <FActionEntry ref:name="GetWorkGroupKey" />
+                <FActionEntry ref:name="GetWorkStepKey" />
+                <FActionEntry ref:name="GetTargetStep" />
+                <FActionEntry ref:name="GetAvailableTime" />
+                <FActionEntry ref:name="InitializeWorkGroup" />
+                <FActionEntry ref:name="InitializeWorkStep" />
+                <FActionEntry ref:name="GetLoadableEqps" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="JobProfileControl">
+              <Option />
+              <Children Capacity="18">
+                <FActionEntry ref:name="FilterProfileSteps" />
+                <FActionEntry ref:name="CompareProfileStep" />
+                <FActionEntry ref:name="OnBeginProfiling" />
+                <FActionEntry ref:name="SelectProfileEqp" />
+                <FActionEntry ref:name="CompareProfileEqp" />
+                <FActionEntry ref:name="DoFilterLot" />
+                <FActionEntry ref:name="SortProfileLot" />
+                <FActionEntry ref:name="GetTactTime" />
+                <FActionEntry ref:name="GetProfileTimes" />
+                <FActionEntry ref:name="CreateDummyWorkLot" />
+                <FActionEntry ref:name="Advance" />
+                <FActionEntry ref:name="UpdateFindStep" />
+                <FActionEntry ref:name="GetMappingLot" />
+                <FActionEntry ref:name="Update" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="JobTradeControl">
+              <Option />
+              <Children Capacity="10">
+                <FActionEntry ref:name="ClassifyOperationType" />
+                <FActionEntry ref:name="CalculatePriority" />
+                <FActionEntry ref:name="SelectUpStep" />
+                <FActionEntry ref:name="CompareUpStep" />
+                <FActionEntry ref:name="DoFilterAssignEqp" />
+                <FActionEntry ref:name="SelectAssignEqp" />
+                <FActionEntry ref:name="CompareAssignEqp" />
+                <FActionEntry ref:name="CanAssignMore" />
+                <FActionEntry ref:name="SelectDownEqp" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="JobChangeControl">
+              <Option />
+              <Children Capacity="8">
+                <FActionEntry ref:name="IsNeedDownStep" />
+                <FActionEntry ref:name="SelectDownEqp1" />
+                <FActionEntry ref:name="IsNeedUpStep" />
+                <FActionEntry ref:name="CanUp" />
+              </Children>
+            </FActionComponent>
+            <FActionComponent Name="JobChangeEvents">
+              <Option />
+              <Children Capacity="8">
+                <FActionEntry ref:name="OnStartWorkAgent" />
+                <FActionEntry ref:name="OnBeforeRun" />
+                <FActionEntry ref:name="OnCalculate" />
+                <FActionEntry ref:name="OnAfterUnassignEqp" />
+                <FActionEntry ref:name="OnAfterAssignEqp" />
+                <FActionEntry ref:name="OnAfterRun" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FCustomEntry Name="Statistics">
+          <Children Capacity="4">
+            <csd:LoadHistInstance Name="LoadHistory" RowType="output.LOAD_HISTORY" Duration="1.00:00:00" Timing="AtBegin">
+              <PackingColumns Capacity="4">
+                <csd:LoadHistPackingColumnInfo Name="LotID" TargetValue="= plan.LotID" />
+                <csd:LoadHistPackingColumnInfo Name="ProductID" TargetValue="= plan.ProductID" />
+                <csd:LoadHistPackingColumnInfo Name="OperID" TargetValue="= plan.Step.StepID" />
+                <csd:LoadHistPackingColumnInfo Name="UnitQty" TargetValue="= plan.UnitQty" />
+              </PackingColumns>
+              <Columns Capacity="16">
+                <csd:LoadHistColumnInfo TargetValue="=ModelContext.Current.VersionNo" ColumnName="VERSION_NO" ColumnDataType="string" />
+                <csd:LoadHistColumnInfo TargetValue="(eqp.Target as SEMEqp).LineID" ColumnName="SITE_ID" ColumnDataType="string" IsKey="True" />
+                <csd:LoadHistColumnInfo TargetValue="= eqp.EqpID" ColumnName="EQP_ID" ColumnDataType="string" IsKey="True" />
+                <csd:LoadHistColumnInfo TargetValue="(eqp.Target as SEMEqp).ResGroup" ColumnName="EQP_GROUP_ID" ColumnDataType="string" />
+                <csd:LoadHistColumnInfo TargetValue="=ShopCalendar.ShiftStartTimeOfDayT(now).DbToString()	" ColumnName="TARGET_DATE" ColumnDataType="string" IsKey="True" />
+                <csd:LoadHistColumnInfo CollectType="LOAD_INFO" ColumnName="INFO_GZIP" ColumnDataType="string" />
+                <csd:LoadHistColumnInfo CollectType="LOAD_INFO" ColumnName="INFO_GZIP2" ColumnDataType="string" />
+                <csd:LoadHistColumnInfo CollectType="LOAD_INFO" ColumnName="INFO_GZIP3" ColumnDataType="string" />
+              </Columns>
+              <Children Capacity="4" />
+            </csd:LoadHistInstance>
+            <csd:LoadStatInstance Name="LoadStatistics" CollectInterval="24" RowType="output.LOAD_STAT" Duration="1.00:00:00" Timing="AtEnd">
+              <Columns Capacity="16">
+                <csd:LoadStatColumnInfo TargetValue="= InputMart.Instance.PlanID" ColumnName="PLAN_ID" ColumnDataType="string" IsKey="True" />
+                <csd:LoadStatColumnInfo TargetValue="= (eqp.Target as SEMEqp).LineID" ColumnName="SITE_ID" ColumnDataType="string" />
+                <csd:LoadStatColumnInfo TargetValue="= (eqp.Target as SEMEqp).FactoryID" ColumnName="FACTORY_ID" ColumnDataType="string" />
+                <csd:LoadStatColumnInfo TargetValue="= (eqp.Target as SEMEqp).FloorID" ColumnName="FLOOR_ID" ColumnDataType="string" />
+                <csd:LoadStatColumnInfo TargetValue="= eqp.Target.ResID" ColumnName="EQP_ID" ColumnDataType="string" IsKey="True" />
+                <csd:LoadStatColumnInfo TargetValue="=now.Date.AddHours(now.Hour - (now.Hour % 24)).DbToString()" ColumnName="TARGET_DATE" ColumnDataType="string" IsKey="True" />
+                <csd:LoadStatColumnInfo CollectType="SETUP" ColumnName="SETUP" ColumnDataType="float" />
+                <csd:LoadStatColumnInfo CollectType="BUSY" ColumnName="BUSY" ColumnDataType="float" />
+                <csd:LoadStatColumnInfo CollectType="IDLE_RUN" ColumnName="IDLERUN" ColumnDataType="float" />
+                <csd:LoadStatColumnInfo CollectType="IDLE" ColumnName="IDLE" ColumnDataType="float" />
+                <csd:LoadStatColumnInfo CollectType="PM" ColumnName="PM" ColumnDataType="float" />
+                <csd:LoadStatColumnInfo CollectType="DOWN" ColumnName="DOWN" ColumnDataType="float" />
+              </Columns>
+              <Children Capacity="4" />
+            </csd:LoadStatInstance>
+          </Children>
+        </FCustomEntry>
+        <FCustomEntry Name="Weights">
+          <Children Capacity="4">
+            <FCustomFolder Name="SEM_WEIGHTS">
+              <Children Capacity="16">
+                <csd2:WeightInstance>
+                  <Definition ref:name="JOB_CHANGE_PRIORITY" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="STEP_TARGET_PRIORITY" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="WAIT_PRIORITY" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="LOT_QTY_PRIORITY" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="ARRANGE_PRIORITY" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="URGENT" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="SAME_LOT" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="REEL_LABEL" />
+                </csd2:WeightInstance>
+                <csd2:WeightInstance>
+                  <Definition ref:name="RES_FIX" />
+                </csd2:WeightInstance>
+              </Children>
+            </FCustomFolder>
+            <FCustomFolder Name="POC_WEIGHTS" />
+          </Children>
+        </FCustomEntry>
+        <FCustomEntry Name="CustomEvents" />
+        <FCustomEntry Name="Filters" />
+      </Children>
+    </FActionMap>
+  </Content>
+</vxml:Document>

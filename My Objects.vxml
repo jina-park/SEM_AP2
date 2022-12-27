@@ -1,0 +1,2862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<vxml:Document xmlns:vxml="http://www.vms-solutions.com/mozart/vxml/2012/1" xmlns:def="definitions" xmlns:ref="references" ContentType="dataclass" ContentKey="My Objects" xmlns="Mozart.Task.Execution.Design, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:ctm="clr-namespace:Mozart.Task.Model;assembly:Mozart.Task.Model, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:cdm="clr-namespace:Mozart.DataActions.Metadata;assembly:Mozart.DataActions, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csg="clr-namespace:Mozart.SeePlan.General.Pegging;assembly:Mozart.SeePlan.General, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csg2="clr-namespace:Mozart.SeePlan.General.DataModel;assembly:Mozart.SeePlan.General, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csd="clr-namespace:Mozart.SeePlan.DataModel;assembly:Mozart.SeePlan, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csg3="clr-namespace:Mozart.SeePlan.General.Simulation;assembly:Mozart.SeePlan.General, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:css="clr-namespace:Mozart.SeePlan.Simulation;assembly:Mozart.SeePlan, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null">
+  <Content>
+    <FDataClassRoot Name="My Objects">
+      <DataMarts>
+        <FDataMarts Name="DataMarts">
+          <Children Capacity="4">
+            <FDataMartRoot Name="InputMart">
+              <Children Capacity="16">
+                <FDataMartFolder Name="Common">
+                  <Children Capacity="32">
+                    <FDataMartFolder Name="FilteredObject">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="SmallLotList" DataType="string" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" Description="SmallLotQty 제약으로  Unpegging된 Lot Id를 저장하는 List" />
+                        <FDataMartObject Name="InvalidLotOper_NotFoundRouteID" DataType="string" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="" />
+                        <FDataMartObject Name="InvalidLotOper_NoDemandOper" DataType="string" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" Description="" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartObject Name="BomChangeTypeDic" DataType="List&lt;string&gt;" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="BomChangeType" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="BomOperaionList" DataType="string" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="CTOperDic" DataType="string" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="LotProdChangeDic" DataType="custom.SEMBOM" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="Key : LotID  " />
+                    <FDataMartObject Name="PlanSeq" DataType="int" ContainerInitializer="0" />
+                    <FDataMartObject Name="ProcessMaps" DataType="custom.SEMProcess" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="Key : ProductID + StepID, Value : SEMProcess" />
+                    <FDataMartObject Name="RouteDic" DataType="string" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="key : StepID   value : RouteID" />
+                    <FDataMartObject Name="SG4430Sequence" DataType="int" ContainerInitializer="410060" Description="SG4430의 Sequence" />
+                    <FDataMartObject Name="TapingProcessingOperSeq" DataType="int" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="Key = ProductID" />
+                    <FDataMartObject Name="Test_StepId" DataType="string" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                  </Children>
+                </FDataMartFolder>
+                <FDataMartFolder Name="Pegging">
+                  <Children Capacity="32">
+                    <FDataMartObject Name="DemDueDateList" DataType="DateTime" CollectionContainer="True" ContainerType="HashSet" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="DemPriorityList" DataType="double" CollectionContainer="True" ContainerType="HashSet" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="LotLpstDic" DataType="output.LOT_LPST" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="LPSTPlanSeq" DataType="int" ContainerInitializer="0" />
+                    <FDataMartObject Name="MinDemandWeek" DataType="string" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="PegSeq" DataType="int" ContainerInitializer="0" />
+                    <FDataMartObject Name="PlanWipList" DataType="SEMPlanWip" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="PlanWips" DataType="HashSet&lt;SEMPlanWip&gt;" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="SEMGeneralStep" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="SEMMergedPegPart" DataType="Mozart.SeePlan.Pegging.MergedPegPart" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="TargetOperIDForSort" DataType="string" ContainerInitializerAuto="True" />
+                    <FDataMartObject Name="UnpegPlanSeq" DataType="int" ContainerInitializer="0" />
+                  </Children>
+                </FDataMartFolder>
+                <FDataMartFolder Name="Simulation">
+                  <Children Capacity="32">
+                    <FDataMartFolder Name="Arrange">
+                      <Children Capacity="8">
+                        <FDataMartObject Name="AllArranges" DataType="List&lt;EqpArrangeInfo&gt;" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="ArrLogDic" DataType="output.ARRANGE_LOG" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="LotID@StepID@ResID@CallingModule" />
+                        <FDataMartObject Name="CycleTimeDic" DataType="input.CYCLE_TIME" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="eqpID@stepID@productID" />
+                        <FDataMartObject Name="EqpOperLotTactTimeDic" DataType="Mozart.SeePlan.DataModel.ProcTimeInfo" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="EqpID@OperID@LotID" />
+                        <FDataMartObject Name="NoSetupCondEqpList" DataType="SEMEqp" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="ResFixedLotArrangeDic" DataType="SEMEqp" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="key:LotID Value:Eqp" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="Dispatch">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="CurrentDispatchingEqp" DataType="SEMEqp" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="JobChangeAgent">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="DownEqps" DataType="SEMAoEquipment" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="KeepWorkSteps" DataType="SEMWorkStep" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="DemandStats">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="DemandStats" DataType="output.DELAY_SHORT_RPT" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="Key = DemandID, Value = &lt;DELAY_SHORT_RPT&gt;" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="JobChange">
+                      <Children Capacity="16">
+                        <FDataMartObject Name="DecisionDic" DataType="DateTime" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="GapDayDic" DataType="double" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="HoldLotDic" DataType="Mozart.SeePlan.Simulation.WorkStep" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="SEMWorkLot" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="InitLoadedEqpDic" DataType="JobConditionGroup" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="ResFixCnt" DataType="int" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="ResFixCntDic" DataType="int" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="SetupGroupEqpMDic" DataType="custom.SEMEqp" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="WorkEqpDic" DataType="SEMWorkEqp" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="WorkGroupArrangeCntDic" DataType="int" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="workGroupStepKeys" DataType="List&lt;string&gt;" CollectionContainer="True" ContainerType="DoubleDictionary" ContainerKeys="string;custom.SEMGeneralStep" ContainerInitializerAuto="True" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="OperPlan">
+                      <Children Capacity="8">
+                        <FDataMartObject Name="OperPlanDetailDic" DataType="output.OPER_PLAN_DETAIL" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="OperPlanDetailSeq" DataType="int" ContainerInitializer="0" />
+                        <FDataMartObject Name="OperPlanDic" DataType="output.OPER_PLAN" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="eqp@step@lot" />
+                        <FDataMartObject Name="OperPlanSeq" DataType="int" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="OperPlanSmallLotBTDic" DataType="output.OPER_PLAN" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="Setup">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="EqpJobConditionDic" DataType="input.SETUP_CONDITION" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="eqpID@lotID@operID" />
+                        <FDataMartObject Name="IsNeedSetupDic" DataType="bool" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="eqpID@lotID@lotCurrStepID" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartFolder Name="Wip">
+                      <Children Capacity="4">
+                        <FDataMartObject Name="UrgentCodeDic" DataType="SEMWipInfo" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="int" ContainerInitializerAuto="True" />
+                        <FDataMartObject Name="WipJobCondDic" DataType="input.WIP_JOB_CONDITION" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="LOT_ID" />
+                      </Children>
+                    </FDataMartFolder>
+                    <FDataMartObject Name="AgentPhase" DataType="int" ContainerInitializer="0" />
+                    <FDataMartObject Name="LotArrangeDic" DataType="input.LOT_ARRANGE" CollectionContainer="True" ContainerType="MultiDictionary" ContainerKeys="string" ContainerInitializerAuto="True" Description="Key:LotID Value:inputs.LOT_ARRNAGE" />
+                    <FDataMartObject Name="SimDurationDates" DataType="string" CollectionContainer="True" ContainerType="List" ContainerInitializerAuto="True" Description="Every date during simulation period" />
+                    <FDataMartObject Name="WipProductList" DataType="List&lt;SEMProduct&gt;" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                  </Children>
+                </FDataMartFolder>
+                <FDataMartFolder Name="My Objects">
+                  <Children Capacity="4">
+                    <FDataMartFolder Name="Common" />
+                    <FDataMartFolder Name="Simulation">
+                      <Children Capacity="4">
+                        <FDataMartFolder Name="Dispatch" />
+                      </Children>
+                    </FDataMartFolder>
+                  </Children>
+                </FDataMartFolder>
+                <FDataMartFolder Name="PlanMaster">
+                  <Children Capacity="8">
+                    <FDataMartObject Name="CutOffDateTime" DataType="DateTime" />
+                    <FDataMartObject Name="EffEndDateTime" DataType="DateTime" />
+                    <FDataMartObject Name="PlanID" DataType="string" />
+                    <FDataMartObject Name="SiteID" DataType="string" />
+                    <FDataMartObject Name="SupplyChainID" DataType="string" />
+                  </Children>
+                </FDataMartFolder>
+                <FDataMartObject Name="AgentPhaseIndex" DataType="int" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+                <FDataMartObject Name="ProductMaxLotID" DataType="int" CollectionContainer="True" ContainerType="Dictionary" ContainerKeys="string" ContainerInitializerAuto="True" />
+              </Children>
+            </FDataMartRoot>
+            <FDataMartRoot Name="TempMart" />
+          </Children>
+        </FDataMarts>
+      </DataMarts>
+      <Constants>
+        <FConstantItem Name="Constants">
+          <ArgumentArray>
+            <ctm:ArgumentInfo-Array>
+              <ctm:ArgumentInfo Category="string" Name="NULL_ID" TypeEnum="String">
+                <InitialValue>
+                  <String>-</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Operation" Name="SG3520" TypeEnum="String">
+                <InitialValue>
+                  <String>SG3520</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Operation" Name="SG3810" TypeEnum="String">
+                <InitialValue>
+                  <String>SG3810</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Operation" Name="SG3910" TypeEnum="String">
+                <InitialValue>
+                  <String>SG3910</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Operation" Name="SM9999" TypeEnum="String" Description="창고 공정">
+                <InitialValue>
+                  <String>SM9999</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Operation" Name="SG6094" TypeEnum="String" Description="Taping 인수 공정">
+                <InitialValue>
+                  <String>SG6094</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DemandOperation" Name="SORTING_OPER_ID" TypeEnum="String" Description="Sorting Demand 공정">
+                <InitialValue>
+                  <String>SG3890</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DemandOperation" Name="OI_OPER_ID" TypeEnum="String" Description="Bulk Demand 공정">
+                <InitialValue>
+                  <String>SG4090</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DemandOperation" Name="TAPING_OPER_ID" TypeEnum="String" Description="Taping Demand 공정">
+                <InitialValue>
+                  <String>SG4460</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="TESTDemandOperarion" Name="STEP07" TypeEnum="String">
+                <InitialValue>
+                  <String>STEP07</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="TESTDemandOperarion" Name="STEP12" TypeEnum="String">
+                <InitialValue>
+                  <String>STEP12</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="BomChangeType" Name="MC" TypeEnum="String" Description="Bulk 기종 변경">
+                <InitialValue>
+                  <String>MC</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="BomChangeType" Name="WR" TypeEnum="String" Description="창고 제품명 변경">
+                <InitialValue>
+                  <String>WR</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="BomChangeType" Name="WC" TypeEnum="String" Description="창고 기종변경">
+                <InitialValue>
+                  <String>WC</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="BomChangeType" Name="WT" TypeEnum="String">
+                <InitialValue>
+                  <String>WT</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="BomChangeType" Name="BT" TypeEnum="String" Description="Taping 제품명변경">
+                <InitialValue>
+                  <String>BT</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ConditionType" Name="Powder" TypeEnum="String">
+                <InitialValue>
+                  <String>C000000009</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ConditionType" Name="CompositionCode" TypeEnum="String">
+                <InitialValue>
+                  <String>Z000000001</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ConditionType" Name="TAPING_MAT" TypeEnum="String">
+                <InitialValue>
+                  <String>C000000040</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="PegWipInfoReason" Name="NO_TARGET" TypeEnum="String">
+                <InitialValue>
+                  <String>NO_TARGET</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="CustomerID" Name="NormalCustomerID" TypeEnum="String">
+                <InitialValue>
+                  <String>0000000000</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ResourceJobCondition" Name="JobCategoryUnable" TypeEnum="String">
+                <InitialValue>
+                  <String>불가</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ResourceJobCondition" Name="JobCategoryDedicated" TypeEnum="String">
+                <InitialValue>
+                  <String>전용</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ResourceJobCondition" Name="JobCategoryAssigned" TypeEnum="String">
+                <InitialValue>
+                  <String>지정</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="ResourceJobCondition" Name="JobCategoryOccupied" TypeEnum="String">
+                <InitialValue>
+                  <String>점유</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="WipState" Name="Run" TypeEnum="String">
+                <InitialValue>
+                  <String>Run</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="WipState" Name="Wait" TypeEnum="String">
+                <InitialValue>
+                  <String>Wait</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="Log" Name="Unpeg" TypeEnum="String">
+                <InitialValue>
+                  <String>(UNPEG)</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DueState" Name="Delay" TypeEnum="String">
+                <InitialValue>
+                  <String>DELAY</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DueState" Name="Normal" TypeEnum="String">
+                <InitialValue>
+                  <String>NORMAL</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DueState" Name="Precede" TypeEnum="String">
+                <InitialValue>
+                  <String>PRECEDE</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="DueState" Name="None" TypeEnum="String">
+                <InitialValue>
+                  <String>NONE</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="RouteID" Name="SGC117" TypeEnum="String">
+                <InitialValue>
+                  <String>SGC117</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="RouteID" Name="SGC118" TypeEnum="String">
+                <InitialValue>
+                  <String>SGC118</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="RouteID" Name="SGC119" TypeEnum="String">
+                <InitialValue>
+                  <String>SGC119</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+              <ctm:ArgumentInfo Category="RouteID" Name="SGC120" TypeEnum="String">
+                <InitialValue>
+                  <String>SGC120</String>
+                </InitialValue>
+              </ctm:ArgumentInfo>
+            </ctm:ArgumentInfo-Array>
+          </ArgumentArray>
+        </FConstantItem>
+      </Constants>
+      <Enums>
+        <FDataClassFolder Name="Enums">
+          <Children Capacity="16">
+            <FDataClassItem Name="ErrCategory" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="ErrCategory">
+                  <Properties>
+                    <cdm:PropertyMeta Name="PERSIST" PropertyType="" />
+                    <cdm:PropertyMeta Name="SIMULATION" PropertyType="" />
+                    <cdm:PropertyMeta Name="PEGGING" PropertyType="" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="ErrLevel" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="ErrLevel">
+                  <Properties>
+                    <cdm:PropertyMeta Name="WARNING" PropertyType="" />
+                    <cdm:PropertyMeta Name="INFO" PropertyType="" />
+                    <cdm:PropertyMeta Name="CRITICAL" PropertyType="" />
+                    <cdm:PropertyMeta Name="ERROR" PropertyType="" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="WeightFactorType" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="WeightFactorType">
+                  <Properties>
+                    <cdm:PropertyMeta Name="FACTOR" PropertyType="" />
+                    <cdm:PropertyMeta Name="FILTER" PropertyType="" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="LineType" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="LineType">
+                  <Properties>
+                    <cdm:PropertyMeta Name="MAIN" PropertyType="">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SUB" PropertyType="">
+                      <DefaultValue>
+                        <String>1</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="QTimeType" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="QTimeType">
+                  <Properties>
+                    <cdm:PropertyMeta Name="MIN" PropertyType="" />
+                    <cdm:PropertyMeta Name="MAX" PropertyType="" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="DemandOper" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="DemandOper" />
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="BomChangeType" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="BomChangeType">
+                  <Properties>
+                    <cdm:PropertyMeta Name="NameChange" PropertyType="" />
+                    <cdm:PropertyMeta Name="ProdChange" PropertyType="" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="FilterReason" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="FilterReason">
+                  <Properties>
+                    <cdm:PropertyMeta Name="LOT_PROD_OPER" PropertyType="" Description="자재제약" MapField="LOT_PROD_OPER " />
+                    <cdm:PropertyMeta Name="NOT_FIRST_BOM" PropertyType="" Description="첫번째 bom만 탐" MapField="NOT_FIRST_BOM " />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="WipArea" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="WipArea">
+                  <Properties>
+                    <cdm:PropertyMeta Name="BulkArea" PropertyType="" Description="첫 공정~ 출검까지의 wip" />
+                    <cdm:PropertyMeta Name="TapingArea" PropertyType="" Description="출검 후 ~ 테이핑까지의 Wip" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="WipState" IsEnum="True">
+              <Content>
+                <DataClassMeta Name="WipState">
+                  <Properties>
+                    <cdm:PropertyMeta Name="RUN" PropertyType="" MapField="Run">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WAIT" PropertyType="" MapField="Wait">
+                      <DefaultValue>
+                        <String>1</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+          </Children>
+        </FDataClassFolder>
+      </Enums>
+      <Children Capacity="4">
+        <FDataClassFolder Name="Pegging">
+          <Children Capacity="16">
+            <FDataClassItem Name="SEMGeneralMoMaster">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMGeneralMoMaster">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg:GeneralMoMaster" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="Week" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SiteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LastStep" PropertyType="SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="TargetOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TargetQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="DemandID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="EndCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="DemandCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Priority" PropertyType="double" />
+                    <cdm:PropertyMeta Name="DemKeyList" PropertyType="List&lt;string&gt;" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMGeneralMoPlan">
+              <Content>
+                <DataClassMeta Name="SEMGeneralMoPlan">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg:GeneralMoPlan" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="LineType" PropertyType="LineType" />
+                    <cdm:PropertyMeta Name="TapingModel" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BulkModel" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TapingCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BulkWeek" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TapingWeek" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PreBuild" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LastBuild" PropertyType="string" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMGeneralPegPart">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMGeneralPegPart">
+                  <Orders1>Product,ProductID,SemProduct,PegTargetList,FirstPegTarget,MoMaster,CurrentStage,Tag,CurrentStageStatus,Properties,BranchList,CurrentBlock,CurrentStep,StepTag,SiteID,HasBom,Steps,Current,Previous,Week,IsProdChanged,IsMasterPegPart,MasterPegPart,ChildPegParts,Phase,BomDic,ProdChangedStep,CanCopyPegPart,CustomerID,EndCustomerID,DemandCustomerID,TargetOperID,TargetQty,DemandQty,DemandID,DueDate,Priority,PrePeggedWip,FirstSEMPegTarget,PeggedWip,AvailPegQty,IsOverPegging,UnpegLog,DemKey,PeggedLots,UnpegReason,UnpegFilterReason</Orders1>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg:GeneralPegPart" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.Product.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SemProduct" PropertyType="custom.SEMProduct" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.Product as SEMProduct</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SiteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="HasBom" PropertyType="bool" IsConst="True" />
+                    <cdm:PropertyMeta Name="Steps" PropertyType="List&lt;custom.PlanStep&gt;" />
+                    <cdm:PropertyMeta Name="Current" PropertyType="custom.PlanStep" IsConst="True">
+                      <DefaultValue>
+                        <String>=Steps[Steps.Count - 1]</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Previous" PropertyType="custom.PlanStep" IsConst="True">
+                      <DefaultValue>
+                        <String>=Steps.Count &gt; 1 ? Steps[Steps.Count - 2] : null</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Week" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsProdChanged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsMasterPegPart" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="MasterPegPart" PropertyType="SEMGeneralPegPart" />
+                    <cdm:PropertyMeta Name="ChildPegParts" PropertyType="List&lt;SEMGeneralPegPart&gt;">
+                      <DefaultValue>
+                        <String>new List&lt;SEMGeneralPegPart&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Phase" PropertyType="int">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="BomDic" PropertyType="MultiDictionary&lt;SEMGeneralStep, SEMProduct&gt;">
+                      <DefaultValue>
+                        <String>= new MultiDictionary&lt;SEMGeneralStep, SEMProduct&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProdChangedStep" PropertyType="SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="CanCopyPegPart" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="EndCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="DemandCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TargetOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TargetQty" PropertyType="double" Description="PrePeg에서 사용하는 Demand 수량(동적)" />
+                    <cdm:PropertyMeta Name="DemandQty" PropertyType="double" Description="Demand 수량(정적)" />
+                    <cdm:PropertyMeta Name="DemandID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="DueDate" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="Priority" PropertyType="double" />
+                    <cdm:PropertyMeta Name="PrePeggedWip" PropertyType="Dictionary&lt;SEMPlanWip,Tuple&lt;double,double&gt;&gt;" Description="key:PlanWip value:PegQty,OverPegQty">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;SEMPlanWip,Tuple&lt;double,double&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FirstSEMPegTarget" PropertyType="SEMGeneralPegTarget" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.FirstPegTarget as SEMGeneralPegTarget</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PeggedWip" PropertyType="Dictionary&lt;SEMPlanWip,Tuple&lt;double,double&gt;&gt;" Description="key:PlanWip value:PegQty,OverPegQty">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;SEMPlanWip, Tuple&lt;double,double&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="AvailPegQty" PropertyType="double" Description="OverPegging 확인" />
+                    <cdm:PropertyMeta Name="IsOverPegging" PropertyType="bool" Description="OverPegging 확인">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UnpegLog" PropertyType="Dictionary&lt;string,int&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,int&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="DemKey" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PeggedLots" PropertyType="Dictionary&lt;SEMLot,Tuple&lt;double,double&gt;&gt;" Description="key:Lot value:PegQty,OverPegQty">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;SEMLot,Tuple&lt;double,double&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UnpegReason" PropertyType="string" />
+                    <cdm:PropertyMeta Name="UnpegFilterReason" PropertyType="string" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMGeneralPegTarget">
+              <Content>
+                <DataClassMeta Name="SEMGeneralPegTarget">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg:GeneralPegTarget" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="IsMain" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.SemMoPlan.LineType == LineType.MAIN</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SemMoPlan" PropertyType="custom.SEMGeneralMoPlan" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.MoPlan as SEMGeneralMoPlan</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Week" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Product" PropertyType="SEMProduct" />
+                    <cdm:PropertyMeta Name="Seq" PropertyType="int">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsProdChanged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="MasterPegTarget" PropertyType="SEMGeneralPegTarget" />
+                    <cdm:PropertyMeta Name="ChildPegTagets" PropertyType="List&lt;SEMGeneralPegTarget&gt;">
+                      <DefaultValue>
+                        <String>new List&lt;SEMGeneralPegTarget&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsMasterPegTarget" PropertyType="bool" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMPlanWip">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="custom.SEMGeneralStep" Name="SEMPlanWip">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg:PlanWip" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="Step" PropertyType="custom.SEMGeneralStep" IsConst="True" />
+                    <cdm:PropertyMeta Name="WipInfo" PropertyType="custom.SEMWipInfo" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Wip as SEMWipInfo</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipProduct" PropertyType="custom.SEMProduct" IsConst="True">
+                      <DefaultValue>
+                        <String>=Wip.Product as SEMProduct</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipProduct.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsRunWip" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Wip.CurrentState == Mozart.SeePlan.Simulation.EntityState.RUN</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsHold" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.AvailableTime != DateTime.MinValue</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Step.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Process" PropertyType="custom.SEMProcess" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.Process as SEMProcess</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProcessID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Process.ProcessID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LotState" PropertyType="Mozart.SeePlan.Simulation.EntityState" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.CurrentState</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" IsConst="True" />
+                    <cdm:PropertyMeta Name="IsFixedProd" PropertyType="bool" Description="S" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.IsProdFixed</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SEMPegWipInfos" PropertyType="List&lt;SEMPegWipInfo&gt;" Description="Wip이 모든 경우의 수로 전개하여 만들어진 PegWipInfo">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMPegWipInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UnusablePegWipInfos" PropertyType="List&lt;SEMPegWipInfo&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMPegWipInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsPrePegged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsPegged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PeggingDemands" PropertyType="Dictionary&lt;SEMGeneralPegPart,Tuple&lt;double,double&gt;&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;SEMGeneralPegPart,Tuple&lt;double,double&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PegWipInfo" PropertyType="SEMPegWipInfo" Description="PegWipInfo리스트에서 선택되어 pegging된 pegwipinfo " />
+                    <cdm:PropertyMeta Name="HasTarget" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LastPegedTarget" PropertyType="SEMGeneralPegTarget" />
+                    <cdm:PropertyMeta Name="UnpegReason" PropertyType="HashSet&lt;string&gt;" Description="UnpegHistory 작성에 사용됨">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UnpegDetailReason" PropertyType="HashSet&lt;string&gt;" Description="UnpegHistory 작성에 사용됨">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="NoArrnageReason" PropertyType="HashSet&lt;string&gt;" Description="UnpegHistory 작성에 사용됨">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="NoArrangeOpers" PropertyType="HashSet&lt;string&gt;">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSplitLot" PropertyType="bool" Description="MultiLotProductChange로인해 Split된 PlanWip" />
+                    <cdm:PropertyMeta Name="SplitQty" PropertyType="double" Description="MultiLotProductChange로인해 Split된 Qty" />
+                    <cdm:PropertyMeta Name="SplitToProduct" PropertyType="SEMProduct" Description="MultiLotProductChange로인해 Split된 Lot의 ToProuct" />
+                    <cdm:PropertyMeta Name="SplitOperID" PropertyType="string" Description="MultiLotProductChange로 인해 Split되는 OPER_ID" />
+                    <cdm:PropertyMeta Name="ArrangedEqps" PropertyType="MultiDictionary&lt;string, SEMEqp&gt;" Description="Arrange 캐싱">
+                      <DefaultValue>
+                        <String>= new MultiDictionary&lt;string, SEMEqp&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="QtyForPrePeg" PropertyType="double" />
+                    <cdm:PropertyMeta Name="IsLeadTimeLate" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ArrangeLogList" PropertyType="List&lt;string&gt;">
+                      <DefaultValue>
+                        <String>=new List&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="PlanStep">
+              <Content>
+                <DataClassMeta Name="PlanStep">
+                  <Properties>
+                    <cdm:PropertyMeta Name="Product" PropertyType="custom.SEMProduct" />
+                    <cdm:PropertyMeta Name="Step" PropertyType="custom.SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Product.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Step.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMYield">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMYield">
+                  <Properties>
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Yield" PropertyType="double" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMPegWipInfo">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMPegWipInfo">
+                  <Properties>
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.LotID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="DemKey" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PlanWip" PropertyType="SEMPlanWip" />
+                    <cdm:PropertyMeta Name="WipInfo" PropertyType="SEMWipInfo" />
+                    <cdm:PropertyMeta Name="TargetOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BranchSeq" PropertyType="int">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromBranchSeq" PropertyType="int">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="Seq" PropertyType="int">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SiteID" PropertyType="string" Description="E101" />
+                    <cdm:PropertyMeta Name="WipProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.WipProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipCustomerID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.CustomerID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipStep" PropertyType="SEMGeneralStep" IsConst="True">
+                      <DefaultValue>
+                        <String>=(this.WipInfo.InitialStep) as SEMGeneralStep</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipStepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipStep.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FlowProduct" PropertyType="SEMProduct" />
+                    <cdm:PropertyMeta Name="FlowProductID" PropertyType="string" Description=" " IsConst="True">
+                      <DefaultValue>
+                        <String>=this.FlowProduct.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FlowCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FlowStep" PropertyType="SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="FlowStepID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FlowRouteId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="MC_ChangedProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WR_ChangedProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WC_ChangedProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WT_ChangedProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BT_ChangedProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="MC_ChangedProdOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WR_ChangedProdOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WC_ChangedProdOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WT_ChangedProdOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BT_ChangedProdOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="MC_IsChangedProd" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="WR_IsChangedProd" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="WC_IsChangedProd" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="WT_IsChangedProd" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="BT_IsChangedProd" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="MC_ChangedCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WR_ChangedCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WC_ChangedCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WT_ChangedCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="BT_ChangedCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="MCBom" PropertyType="SEMBOM" />
+                    <cdm:PropertyMeta Name="WRBom" PropertyType="SEMBOM" />
+                    <cdm:PropertyMeta Name="WCBom" PropertyType="SEMBOM" />
+                    <cdm:PropertyMeta Name="WTBom" PropertyType="SEMBOM" />
+                    <cdm:PropertyMeta Name="BTBom" PropertyType="SEMBOM" />
+                    <cdm:PropertyMeta Name="EndCustomerList" PropertyType="List&lt;string&gt;" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.WipInfo.EndCustomerList</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipAvailDate" PropertyType="DateTime" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.AvailableTime</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CalcAvailDate" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="CalcOutDate" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="AvailableTimeDic" PropertyType="Dictionary&lt;string, DateTime&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, DateTime&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SG3910AvailableTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="SG4430AvailableTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="FlowTat" PropertyType="double">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CalcTat" PropertyType="double" Description="이전 oper의 Tat">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="TotalTat" PropertyType="double">
+                      <DefaultValue>
+                        <String>0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsTargetOper" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsLotOper" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsLotProdChange" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="FlowQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="FlowYield" PropertyType="double" />
+                    <cdm:PropertyMeta Name="IsSpecialYield" PropertyType="bool" Description="FlowYield의 SpecialYeild여부" />
+                    <cdm:PropertyMeta Name="CalcYield" PropertyType="double" Description="이전 oper의 수율" />
+                    <cdm:PropertyMeta Name="AccumYield" PropertyType="double" />
+                    <cdm:PropertyMeta Name="YieldHistory" PropertyType="Dictionary&lt;string,double&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,double&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PowderCond" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.PowderCond</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromTapingMatCond" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.FromTapingMatCond</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ToTapingMatCond" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.ToTapingMatCond</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsUsable" PropertyType="bool">
+                      <DefaultValue>
+                        <String>true</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UnUsableReason" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PegWipIdx" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsPegged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsPrePegged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SortingPeggingPart" PropertyType="List&lt;SEMGeneralPegPart&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMGeneralPegPart&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="BulkPeggingPart" PropertyType="List&lt;SEMGeneralPegPart&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMGeneralPegPart&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="TapingPeggingPart" PropertyType="List&lt;SEMGeneralPegPart&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMGeneralPegPart&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipQty" PropertyType="double" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.WipInfo.UnitQty</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SemOperTargets" PropertyType="List&lt;SEMOperTarget&gt;" Description="LPST로그 작성용">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMOperTarget&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromProdID" PropertyType="string" Description="LPST로그 작성용">
+                      <DefaultValue>
+                        <String>= string.Empty</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromCustID" PropertyType="string" Description="LPST로그 작성용">
+                      <DefaultValue>
+                        <String>= string.Empty</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsWriteLpstLog" PropertyType="bool" Description="한 lot은 LPST로그를 한번만씀">
+                      <DefaultValue>
+                        <String>true</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsProdFixed" PropertyType="bool" Description="MODEL_FIX 로직과 MC bom 1회 제한 로직에 쓰임">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProcessingOpers" PropertyType="Dictionary&lt;string,SEMProduct&gt;" Description="Key = StepID, Value = Product, 해당 wip이 demend point까지 가기위해 거쳐간 ProcessingOper">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,SEMProduct&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="OperDic" PropertyType="Dictionary&lt;string,SEMGeneralStep&gt;">
+                      <DefaultValue>
+                        <String>=new Dictionary&lt;string,SEMGeneralStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="NextOperDic" PropertyType="Dictionary&lt;string,SEMGeneralStep&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,SEMGeneralStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsMultiLotProdChange" PropertyType="bool" Description="MultiLotProdChange 여부">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SplitLotID" PropertyType="string" Description="MultiLotProdChange로 Split된 LotID" />
+                    <cdm:PropertyMeta Name="SplitProductID" PropertyType="string" Description="MultiLotProdChange로 Split된  직후의 ProductID" />
+                    <cdm:PropertyMeta Name="FP_I_TAPING_MATERIAL_ALT" PropertyType="input.TAPING_MATERIAL_ALT" />
+                    <cdm:PropertyMeta Name="Product" PropertyType="custom.SEMProduct" IsConst="True">
+                      <DefaultValue>
+                        <String>= InputMart.Instance.SEMProduct[this.FlowProductID]</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SEMLot" PropertyType="SEMLot" />
+                    <cdm:PropertyMeta Name="StepArrangeLogs" PropertyType="Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;" Description="KEY1 = ConditionSet, KEY2 = ConditionTypeCode, Value = ConsAndVals">
+                      <DefaultValue>
+                        <String>= new Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ConditionSetLogs" PropertyType="Dictionary&lt;string,bool&gt;" Description="KEY = CondtionSet, Value = True/False">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,bool&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSkipLogic" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ArrangedEqps" PropertyType="MultiDictionary&lt;string,SEMEqp&gt;">
+                      <DefaultValue>
+                        <String>=new MultiDictionary&lt;string,SEMEqp&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ConditionSet" PropertyType="Dictionary&lt;string, string&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMOperTarget">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMOperTarget">
+                  <Properties>
+                    <cdm:PropertyMeta Name="LotId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RouteId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PlanType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperSeq" PropertyType="int" />
+                    <cdm:PropertyMeta Name="Qty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="ProductId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SiteId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CustomerId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="EndCustomerIDs" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TargetDemandId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LeadTime" PropertyType="double" />
+                    <cdm:PropertyMeta Name="Lpst" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="OperTarget" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TargetPegPart" PropertyType="SEMGeneralPegPart" />
+                    <cdm:PropertyMeta Name="OperYield" PropertyType="double" />
+                    <cdm:PropertyMeta Name="IsSpecialYield" PropertyType="bool" Description="OperYield의 special yield 여부" />
+                    <cdm:PropertyMeta Name="CalcYield" PropertyType="double" Description="이전 공정의 Yield" />
+                    <cdm:PropertyMeta Name="TotalTAT" PropertyType="double" />
+                    <cdm:PropertyMeta Name="OperTat" PropertyType="double" />
+                    <cdm:PropertyMeta Name="CalcTat" PropertyType="double" Description="이전 공정의 Tat" />
+                    <cdm:PropertyMeta Name="CalcTotalTat" PropertyType="double" Description="이전 공정의 TotalTat" />
+                    <cdm:PropertyMeta Name="FromProdID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FromCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ModelChange" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="SEMGeneralStep" PropertyType="SEMGeneralStep" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+          </Children>
+        </FDataClassFolder>
+        <FDataClassFolder Name="Common">
+          <Children Capacity="16">
+            <FDataClassItem Name="SEMGeneralStep">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMGeneralStep">
+                  <BaseValues>
+                    <Entry>
+                      <String>StepType</String>
+                      <String>=this.StdStep.StepType</String>
+                    </Entry>
+                    <Entry>
+                      <String>StdStepID</String>
+                      <String>=this.StdStep.StepID</String>
+                    </Entry>
+                  </BaseValues>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:GeneralStep" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="AltProductList" PropertyType="HashSet&lt;custom.SEMProduct&gt;">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;custom.SEMProduct&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StdStep" PropertyType="custom.SEMStdStep" />
+                    <cdm:PropertyMeta Name="NextStepId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="StepTimes" PropertyType="Dictionary&lt;string,Dictionary&lt;string, custom.StepTime&gt;&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,Dictionary&lt;string, custom.StepTime&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepTats" PropertyType="Dictionary&lt;string,custom.SEMStepTat&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,custom.SEMStepTat&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SEMRouteID" PropertyType="string" Description="대공정 Id, 위의 RoutID는 Mozart에서 제공하는 RouteID" />
+                    <cdm:PropertyMeta Name="NextOper" PropertyType="SEMGeneralStep" Description="LOT_OPER 계산 시 사용" />
+                    <cdm:PropertyMeta Name="PrevOper" PropertyType="SEMGeneralStep" Description="LOT_OPER 계산 시 사용" />
+                    <cdm:PropertyMeta Name="IsLotOper" PropertyType="bool" Description="LOT_OPER 계산 시 사용">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="NextOperDic" PropertyType="Dictionary&lt;string, SEMGeneralStep&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, SEMGeneralStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsEndLotOper" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsProcessing" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.StdStep.IsProcessing</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="AvgTact" PropertyType="double" />
+                    <cdm:PropertyMeta Name="Yield" PropertyType="double" />
+                    <cdm:PropertyMeta Name="CycleTimeDic" PropertyType="Dictionary&lt;string, double&gt;" Description="key:EqpID  Val:CycleTime">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, double&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CTOperDic" PropertyType="Dictionary&lt;string, double&gt;" Description="key:EqpID  Val:CycleTime">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, double&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                            <String>StepID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                        <cdm:DataViewItem Name="View2" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>StepID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                        <cdm:DataViewItem Name="LotOperView" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                            <String>StepID</String>
+                            <String>LotID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMWipInfo">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMWipInfo">
+                  <Interfaces>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:IWipInfo" />
+                  </Interfaces>
+                  <Properties>
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="UnitQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="Product" PropertyType="Mozart.SeePlan.General.DataModel.Product" />
+                    <cdm:PropertyMeta Name="Process" PropertyType="Mozart.SeePlan.General.DataModel.Process" />
+                    <cdm:PropertyMeta Name="SEMProcess" PropertyType="SEMProcess" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Process as SEMProcess</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="InitialStep" PropertyType="Mozart.SeePlan.General.DataModel.GeneralStep" />
+                    <cdm:PropertyMeta Name="InitialSEMStep" PropertyType="SEMGeneralStep" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.InitialStep as SEMGeneralStep</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="InitialEqp" PropertyType="Mozart.SeePlan.General.DataModel.Eqp" />
+                    <cdm:PropertyMeta Name="SiteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CustomerID" PropertyType="string" Description="BOM에서 사용하는 CustomerID" />
+                    <cdm:PropertyMeta Name="CurrentState" PropertyType="Mozart.SeePlan.Simulation.EntityState" />
+                    <cdm:PropertyMeta Name="WipProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipProcessID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipRouteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipStepID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipEqpID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipState" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WipStateTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="LastTrackInTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="LastProcessStartTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="LastTrackOutTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="WipAvailableTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="AvailableTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="IsInPortWip" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="ProductionType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PeggedTargets" PropertyType="List&lt;custom.SEMGeneralPegTarget&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;custom.SEMGeneralPegTarget&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsRun" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.CurrentState ==  Mozart.SeePlan.Simulation.EntityState.RUN</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="RunResourceID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsInitWip" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsInputLot" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsProdFixed" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsLotOper" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsLotProdChange" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsMultiLotProdChange" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="LotOper" PropertyType="SEMLotOper" />
+                    <cdm:PropertyMeta Name="PowderCond" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FromTapingMatCond" PropertyType="string" Description="Pegging 전 Taping 자재 코드, Backward에서 사용하는 자재코드" />
+                    <cdm:PropertyMeta Name="ToTapingMatCond" PropertyType="string" Description="Pegging 후 변경된 Taping 자재 코드, Forward에서 사용하는 자재코드" />
+                    <cdm:PropertyMeta Name="WipArea" PropertyType="WipArea" />
+                    <cdm:PropertyMeta Name="WipArrivedTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="EndCustomerList" PropertyType="List&lt;string&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsEndCustomerCheck" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FactoryID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PlanWip" PropertyType="SEMPlanWip" />
+                    <cdm:PropertyMeta Name="SplitPlanWips" PropertyType="List&lt;SEMPlanWip&gt;" Description="MultiLotProductChange에서 Split된 PlanWips">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMPlanWip&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LotSplitDic" PropertyType="Dictionary&lt;string, double&gt;" Description="MultiLotProductChange에서 Lot Split 정보 / &lt;productID, Qty&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,double&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SplitLotsRemaninQty" PropertyType="double" Description="MultiLotProductChange에서 Split된 Wip들의 잔여 수량" />
+                    <cdm:PropertyMeta Name="FloorID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OrderNO" PropertyType="double" />
+                    <cdm:PropertyMeta Name="ArrangedEqps" PropertyType="Mozart.Collections.MultiDictionary&lt;string,custom.SEMEqp&gt;" Description="KEY = StepID">
+                      <DefaultValue>
+                        <String>= new Mozart.Collections.MultiDictionary&lt;string,custom.SEMEqp&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsLotArrange" PropertyType="bool" Description="LotArrange 대상 wip 여부">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LotArrangedEqpDic" PropertyType="MultiDictionary&lt;string, SEMEqp&gt;" Description="key:StepID value:Eqp">
+                      <DefaultValue>
+                        <String>= new MultiDictionary&lt;string, SEMEqp&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsResFixLotArrange" PropertyType="bool" Description="Resource Fix Lot Arrange 대상 여부">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ResFixLotArrangeEqp" PropertyType="SEMEqp" Description="Fix된 EQP" />
+                    <cdm:PropertyMeta Name="WipJobConditions" PropertyType="Dictionary&lt;string,string&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSplitedWip" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="DataType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LotArrangeOperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsSmallLot" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ResProductGroup" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LotName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SameLots" PropertyType="List&lt;SEMWipInfo&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMWipInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="UrgentCode" PropertyType="string" />
+                    <cdm:PropertyMeta Name="UrgentPriority" PropertyType="int" />
+                    <cdm:PropertyMeta Name="IsUrgent" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsUrgentUnpeg" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsReelLabeled" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="PlatingRecipe" PropertyType="List&lt;input.PLATING_RECIPE&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;input.PLATING_RECIPE&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LotClass" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsNoResRunLot" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CompositionCode" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RouteCode" PropertyType="string" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMProcess">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" MapType="ProcStep" Name="SEMProcess">
+                  <BaseMappings>
+                    <Entry>
+                      <String>ProcessID</String>
+                      <String>PRODUCT_ID</String>
+                    </Entry>
+                    <Entry>
+                      <String>LineID</String>
+                      <String>SITE_ID</String>
+                    </Entry>
+                  </BaseMappings>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:Process" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="SEMGeneralSteps" PropertyType="List&lt;SEMGeneralStep&gt;">
+                      <DefaultValue>
+                        <String>=new List&lt;SEMGeneralStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProcessID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMProduct">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMProduct">
+                  <BaseMappings>
+                    <Entry>
+                      <String>ProductID</String>
+                      <String>PRODUCT_ID</String>
+                    </Entry>
+                  </BaseMappings>
+                  <Orders1>LineID,Process,ProductID,ProductGroup,SameNext,SameHead,HasSame,HasPrevs,PrevCount,Prevs,HasNexts,NextCount,Nexts,ChipSize,Capacity,Thickness,FactoryId,Key,SEMProcess,PackingMinQty,MaterialList,SmallLotQty,Temperature,Devation,Voltage,PlatingMethod,Special,TapingType,ReelInch,CarrierType,HorizontalVertical,Pitch,ThicknessValue,ThicknessCodeValue,ChipQty,FP_I_PRODUCT,ModelOutsidePaste,TermFiringProfile,SortingJobCondition</Orders1>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:Product" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="ProductGroup" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ChipSize" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Capacity" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Thickness" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FactoryId" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SEMProcess" PropertyType="custom.SEMProcess" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.Process as SEMProcess</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PackingMinQty" PropertyType="int" />
+                    <cdm:PropertyMeta Name="MaterialList" PropertyType="List&lt;Tuple&lt;string, string&gt;&gt;" Description="Tuple&lt;FROM_ITEM&lt;, TO_ITEM&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;Tuple&lt;string, string&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SmallLotQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="Temperature" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Devation" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Voltage" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PlatingMethod" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Special" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TapingType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ReelInch" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CarrierType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="HorizontalVertical" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Pitch" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ThicknessValue" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ThicknessCodeValue" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ChipQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="FP_I_PRODUCT" PropertyType="input.PRODUCT" />
+                    <cdm:PropertyMeta Name="ModelOutsidePaste" PropertyType="List&lt;input.MODEL_OUTSIDE_PASTE&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;input.MODEL_OUTSIDE_PASTE&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="TermFiringProfile" PropertyType="List&lt;input.TERM_FIRING_PROFILE&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;input.TERM_FIRING_PROFILE&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SortingJobCondition" PropertyType="List&lt;input.SORTING_JOB_CONDITION&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;input.SORTING_JOB_CONDITION&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMStepTarget">
+              <Content>
+                <DataClassMeta Name="SEMStepTarget">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csd:StepTarget" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="Mo" PropertyType="custom.SEMGeneralMoPlan" />
+                    <cdm:PropertyMeta Name="Product" PropertyType="custom.SEMProduct" />
+                    <cdm:PropertyMeta Name="IsProdChanged" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMStdStep">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMStdStep">
+                  <Properties>
+                    <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FactoryID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RouteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RouteName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RouteNameE" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperID" PropertyType="string" IsPrimaryKey="True" />
+                    <cdm:PropertyMeta Name="OperName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperNameE" PropertyType="string" />
+                    <cdm:PropertyMeta Name="StepType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="StepSeq" PropertyType="int" />
+                    <cdm:PropertyMeta Name="IsProcessing" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsLotSplit" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsInputStep" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="PrevStep" PropertyType="custom.SEMStdStep" />
+                    <cdm:PropertyMeta Name="NexStep" PropertyType="custom.SEMStdStep" />
+                    <cdm:PropertyMeta Name="AllEqps" PropertyType="List&lt;SEMEqp&gt;" />
+                    <cdm:PropertyMeta Name="IsMandatory" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.StepType == "MAIN" ? true : false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsDemandStep" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CTOperID" PropertyType="string" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>OperID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMStepTat">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMStepTat">
+                  <Properties>
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="TAT" PropertyType="double" />
+                    <cdm:PropertyMeta Name="IsMain" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="Tat" PropertyType="TimeSpan" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                            <String>OperID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMBOM">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMBOM">
+                  <Properties>
+                    <cdm:PropertyMeta Name="FromProduct" PropertyType="SEMProduct" />
+                    <cdm:PropertyMeta Name="ToProduct" PropertyType="SEMProduct" />
+                    <cdm:PropertyMeta Name="FromStep" PropertyType="SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="ToStep" PropertyType="SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="FromProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.FromProduct.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ToProductID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.ToProduct.ProductID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromStepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.FromStep.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ToStepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.ToStep.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FromCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ToCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ChangeType" PropertyType="string" />
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" Description="LotProdChange에서만 사용" />
+                    <cdm:PropertyMeta Name="IsLotProdChange" PropertyType="bool" Description="LotProdChange에서만 사용" />
+                    <cdm:PropertyMeta Name="Qty" PropertyType="double" Description="LotProdChange에서만 사용" />
+                    <cdm:PropertyMeta Name="IsMultiLotProdChange" PropertyType="bool" Description="LotProdChange에서만 사용, 한 Lot에 대해 LotProdChange가 여러개인 경우" />
+                    <cdm:PropertyMeta Name="WipInfo" PropertyType="SEMWipInfo" Description="LotProdChange에서만 사용" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ToProductID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                        <cdm:DataViewItem Name="View2" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>FromProductID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                        <cdm:DataViewItem Name="View3" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>FromProductID</String>
+                            <String>FromStepID</String>
+                            <String>FromCustomerID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                        <cdm:DataViewItem Name="View4" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>FromProductID</String>
+                            <String>FromCustomerID</String>
+                            <String>FromStepID</String>
+                            <String>ChangeType</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMLotOper">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="SEMLotOper">
+                  <Properties>
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SEMRouteID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Steps" PropertyType="List&lt;SEMGeneralStep&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMGeneralStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WipInfo" PropertyType="SEMWipInfo" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>LotID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+          </Children>
+        </FDataClassFolder>
+        <FDataClassFolder Name="Simulation">
+          <Children Capacity="32">
+            <FDataClassItem Name="SEMLotBatch">
+              <Content>
+                <DataClassMeta Name="SEMLotBatch">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg3:LotBatch" />
+                  </BaseClass>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMLot">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMLot">
+                  <Orders1>OriginLineID,LineID,Product,Process,WipInfo,CurrentProductID,CurrentCustomerID,CurrentProcessID,CurrentStepID,Route,LotID,UnitQty,UnitQtyDouble,Steps,PreviousPlan,CurrentPlan,Plans,IsStarted,IsFinished,PreviousStep,CurrentStep,WeightInfo,ToolSettings,DispatchInTime,ReleaseTime,LotState,CurrentState,StateTime,Priority,Resources,HasResources,Contents,HasContents,NumOfUnits,CurrentSEMPlan,PlanSteps,SEMProduct,DemandProdID,Wip,CurrentSEMStep,InflowLot,QTimeInfo,LogDetail,FactoryID,FloorID,OriginalLot,IsMultiLotSplit,SplitReason,IsSplitRecorded,IsMCChanged,IsWRChanged,IsWCChanged,IsWTChanged,IsBTChanged,PlanWip,FromProductID,FromCustomerID,PreEndTime,IsCapaSplitLot,PeggingDemands,StepJobCondLogs,StepJobSetupTimes,StepJobSetupLogs,StepJobConditions,AfterTransferTime,InTarget,LastStartTime,DelayShortInfoDic,IsSmallLotHolded,CurrentWorkGroup,CurrentWorkStep,CurrentWorkLot,WorkStepDic,IsOnlyModelChange,SameLots,IsSameLotProcessing,SameLotEqp</Orders1>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg3:Lot" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="CurrentCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="CurrentSEMPlan" PropertyType="custom.SEMPlanInfo" IsConst="True">
+                      <DefaultValue>
+                        <String>this.CurrentPlan as SEMPlanInfo</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="PlanSteps" PropertyType="List&lt;string&gt;" />
+                    <cdm:PropertyMeta Name="SEMProduct" PropertyType="SEMProduct" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Product as SEMProduct</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="DemandProdID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Wip" PropertyType="SEMWipInfo" IsConst="True">
+                      <DefaultValue>
+                        <String>this.WipInfo as SEMWipInfo</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CurrentSEMStep" PropertyType="SEMGeneralStep" IsConst="True">
+                      <DefaultValue>
+                        <String>= this.CurrentStep as SEMGeneralStep</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="InflowLot" PropertyType="InflowLot" />
+                    <cdm:PropertyMeta Name="QTimeInfo" PropertyType="QTimeInfo" />
+                    <cdm:PropertyMeta Name="LogDetail" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FactoryID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FloorID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OriginalLot" PropertyType="custom.SEMLot" />
+                    <cdm:PropertyMeta Name="IsMultiLotSplit" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="SplitReason" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsSplitRecorded" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsMCChanged" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsWRChanged" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsWCChanged" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsWTChanged" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="IsBTChanged" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="PlanWip" PropertyType="custom.SEMPlanWip" />
+                    <cdm:PropertyMeta Name="FromProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FromCustomerID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PreEndTime" PropertyType="datetime" Description="OPER_PLAN의 PRE_END_TIME 출력용" />
+                    <cdm:PropertyMeta Name="IsCapaSplitLot" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="PeggingDemands" PropertyType="Dictionary&lt;SEMGeneralPegPart,Tuple&lt;double,double&gt;&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;SEMGeneralPegPart,Tuple&lt;double,double&gt;&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepJobCondLogs" PropertyType="Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;" Description="KEY1 = StepID, KEY2 = ConditionTypeCode, Value = EqpAndLotConditions">
+                      <DefaultValue>
+                        <String>= new Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepJobSetupTimes" PropertyType="Mozart.Collections.MultiDictionary&lt;string,double&gt;" Description="KEY = StepID@ResourceID, Value = List&lt;double:SetupTime&gt;">
+                      <DefaultValue>
+                        <String>= new Mozart.Collections.MultiDictionary&lt;string,double&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepJobSetupLogs" PropertyType="Dictionary&lt;string,output.SETUP_LOG&gt;" Description="KEY = StepID@ResourceID, Value = SETUP_LOG">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,output.SETUP_LOG&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepJobConditions" PropertyType="Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;" Description="KEY1 = StepID, KEY2 = ConditionTypeCode, Value = SetupCondition">
+                      <DefaultValue>
+                        <String>= new Mozart.Collections.DoubleDictionary&lt;string,string,string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="AfterTransferTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="InTarget" PropertyType="custom.InTarget" />
+                    <cdm:PropertyMeta Name="LastStartTime" PropertyType="DateTime?" />
+                    <cdm:PropertyMeta Name="DelayShortInfoDic" PropertyType="Dictionary&lt;string, DelayShortInfo&gt;">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string, DelayShortInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSmallLotHolded" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="CurrentWorkGroup" PropertyType="SEMWorkGroup" />
+                    <cdm:PropertyMeta Name="CurrentWorkStep" PropertyType="SEMWorkStep" />
+                    <cdm:PropertyMeta Name="CurrentWorkLot" PropertyType="SEMWorkLot" />
+                    <cdm:PropertyMeta Name="WorkStepDic" PropertyType="Dictionary&lt;int, SEMWorkStep&gt;">
+                      <DefaultValue>
+                        <String>=new Dictionary&lt;int, SEMWorkStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsOnlyModelChange" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="SameLots" PropertyType="List&lt;SEMLot&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMLot&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSameLotProcessing" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SameLotEqp" PropertyType="List&lt;SEMAoEquipment&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMAoEquipment&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMEqp">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMEqp">
+                  <BaseMappings>
+                    <Entry>
+                      <String>EqpID</String>
+                      <String>RESOURCE_ID</String>
+                    </Entry>
+                    <Entry>
+                      <String>LineID</String>
+                      <String>SITE_ID</String>
+                    </Entry>
+                    <Entry>
+                      <String>ResID</String>
+                      <String>RESOURCE_ID</String>
+                    </Entry>
+                    <Entry>
+                      <String>ResGroup</String>
+                      <String>OPERATION_ID</String>
+                    </Entry>
+                    <Entry>
+                      <String>Utilization</String>
+                      <String>UTILIZATION</String>
+                    </Entry>
+                  </BaseMappings>
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:Eqp" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="IsValid" PropertyType="bool">
+                      <DefaultValue>
+                        <String>true</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="FactoryID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="FloorID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OperIDs" PropertyType="List&lt;string&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="LastSetupCondition" PropertyType="Dictionary&lt;string,input.SETUP_CONDITION&gt;" Description="KEY = condition type code">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,input.SETUP_CONDITION&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ResourceMES" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ResourceGroup" PropertyType="string" />
+                    <cdm:PropertyMeta Name="RunWip" PropertyType="SEMWipInfo" />
+                    <cdm:PropertyMeta Name="ReservedLotIDs" PropertyType="List&lt;string&gt;">
+                      <DefaultValue>
+                        <String>=new List&lt;string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="StepJobConditions" PropertyType="Dictionary&lt;string,string&gt;" Description="KEY = ConditionTypeCode, Value = ConditionValue">
+                      <DefaultValue>
+                        <String>= new Dictionary&lt;string,string&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="AoEqp" PropertyType="SEMAoEquipment" />
+                    <cdm:PropertyMeta Name="LastSetupTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="HasSetupCondition" PropertyType="bool">
+                      <DefaultValue>
+                        <String>true</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SetupGroupKey" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ArrangedWip" PropertyType="List&lt;SEMWipInfo&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMWipInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ArrangedLot" PropertyType="List&lt;SEMLot&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMLot&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ResFixedWips" PropertyType="List&lt;SEMWipInfo&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMWipInfo&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ResProductGroup" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WORK_AREA" PropertyType="string" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMPlanInfo">
+              <Content>
+                <DataClassMeta Name="SEMPlanInfo">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="csg2:PlanInfo" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="IsPegged" PropertyType="bool" IsConst="True">
+                      <DefaultValue>
+                        <String>=PegInfoList != null &amp;&amp; PegInfoList.Count &gt; 0</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="MainPegInfo" PropertyType="ForwardPegInfo" IsConst="True">
+                      <DefaultValue>
+                        <String>this.IsPegged ? PegInfoList[0] : null</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="MainTarget" PropertyType="SEMStepTarget" IsConst="True">
+                      <DefaultValue>
+                        <String>this.MainPegInfo == null ? null : this.MainPegInfo.StepTarget as SEMStepTarget</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SEMStep" PropertyType="custom.SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="IsInitRunWip" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="TrackInTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="TrackOutTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="ProductVersion" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Lot" PropertyType="SEMLot" />
+                    <cdm:PropertyMeta Name="WipInfo" PropertyType="SEMWipInfo" />
+                    <cdm:PropertyMeta Name="IsEqpRecipe" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="Product" PropertyType="SEMProduct" />
+                    <cdm:PropertyMeta Name="EqpInEndTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="EqpInStartTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="IsIdleSetup" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="InQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="OutQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="AoBucketTime" PropertyType="Mozart.Simulation.Engine.Time" />
+                    <cdm:PropertyMeta Name="EqpState" PropertyType="LoadingStates" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassFolder Name="Dispatch">
+              <Children Capacity="4">
+                <FDataClassItem Name="SEMWeightFilter">
+                  <Content>
+                    <DataClassMeta Name="SEMWeightFilter">
+                      <Properties>
+                        <cdm:PropertyMeta Name="FilterID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Weight" PropertyType="string" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="SEMWeightPreset">
+                  <Content>
+                    <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMWeightPreset">
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="csd:WeightPreset" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="FilterList" PropertyType="Dictionary&lt;string,custom.SEMWeightFilter&gt;">
+                          <DefaultValue>
+                            <String>= new Dictionary&lt;string,custom.SEMWeightFilter&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="MapPresetID" PropertyType="string" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="RawWeightFactor">
+                  <Content>
+                    <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="RawWeightFactor">
+                      <Properties>
+                        <cdm:PropertyMeta Name="FactorID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="FactorKind" PropertyType="WeightFactorType" />
+                        <cdm:PropertyMeta Name="IsActive" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="FactorDesc" PropertyType="string" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+              </Children>
+            </FDataClassFolder>
+            <FDataClassItem Name="SEMAoEquipment">
+              <Content>
+                <DataClassMeta Name="SEMAoEquipment">
+                  <BaseClass>
+                    <cdm:ReflectedBaseTypeInfo TargetType="css:AoEquipment" />
+                  </BaseClass>
+                  <Properties>
+                    <cdm:PropertyMeta Name="LoadingState" PropertyType="LoadingStates" />
+                    <cdm:PropertyMeta Name="AvailableSetupTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="AvailablePMTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="IsAcidConst" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="AcidDensity" PropertyType="string" />
+                    <cdm:PropertyMeta Name="InflowStep" PropertyType="InflowStep" />
+                    <cdm:PropertyMeta Name="LastJobCondition" PropertyType="input.SETUP_CONDITION" />
+                    <cdm:PropertyMeta Name="CurrentState" PropertyType="LoadingStates" />
+                    <cdm:PropertyMeta Name="ReservedLotList" PropertyType="List&lt;SEMLot&gt;">
+                      <DefaultValue>
+                        <String>=new List&lt;SEMLot&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProcessingLot" PropertyType="SEMLot" />
+                    <cdm:PropertyMeta Name="LotStartTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="LotEndTime" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="ArrangedLots" PropertyType="HashSet&lt;SEMLot&gt;">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;SEMLot&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WorkStepList" PropertyType="HashSet&lt;SEMWorkStep&gt;">
+                      <DefaultValue>
+                        <String>= new HashSet&lt;SEMWorkStep&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="WorkEqp" PropertyType="SEMWorkEqp" />
+                    <cdm:PropertyMeta Name="Data" PropertyType="WorkEqpData" />
+                    <cdm:PropertyMeta Name="IsNeedProfileSetup" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="IsSameLotHold" PropertyType="bool">
+                      <DefaultValue>
+                        <String>false</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProcessingSameLots" PropertyType="List&lt;SEMLot&gt;">
+                      <DefaultValue>
+                        <String>= new List&lt;SEMLot&gt;()</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="SameLotName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="WorkStep" PropertyType="SEMWorkStep" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassFolder Name="Arrange">
+              <Children Capacity="4">
+                <FDataClassItem Name="EqpArrangeInfo">
+                  <Content>
+                    <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" GenerateCtor="False" Name="EqpArrangeInfo">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="EqpID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="OperationID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                      </Properties>
+                      <ViewInfo>
+                        <cdm:DataViewInfo>
+                          <Items Capacity="4">
+                            <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                              <Keys Capacity="4">
+                                <String>ProductID</String>
+                                <String>OperationID</String>
+                              </Keys>
+                            </cdm:DataViewItem>
+                          </Items>
+                        </cdm:DataViewInfo>
+                      </ViewInfo>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+              </Children>
+            </FDataClassFolder>
+            <FDataClassItem Name="StepTime">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="StepTime">
+                  <Properties>
+                    <cdm:PropertyMeta Name="EqpID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="Step" PropertyType="custom.SEMGeneralStep" />
+                    <cdm:PropertyMeta Name="StepID" PropertyType="string" IsConst="True">
+                      <DefaultValue>
+                        <String>=this.Step.StepID</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                    <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ProcTime" PropertyType="float" />
+                    <cdm:PropertyMeta Name="TactTime" PropertyType="float" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>ProductID</String>
+                            <String>StepID</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassFolder Name="Inflow">
+              <Children Capacity="8">
+                <FDataClassItem Name="InflowLot">
+                  <Content>
+                    <DataClassMeta Name="InflowLot">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Lot" PropertyType="SEMLot" />
+                        <cdm:PropertyMeta Name="AvailableTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="InflowStep" PropertyType="InflowStep" />
+                        <cdm:PropertyMeta Name="Product" PropertyType="SEMProduct" />
+                        <cdm:PropertyMeta Name="TargetStep" PropertyType="SEMGeneralStep" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="InflowStep">
+                  <Content>
+                    <DataClassMeta Name="InflowStep">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Group" PropertyType="InflowGroup" />
+                        <cdm:PropertyMeta Name="Sequence" PropertyType="int" />
+                        <cdm:PropertyMeta Name="InflowLots" PropertyType="List&lt;InflowLot&gt;">
+                          <DefaultValue>
+                            <String>new List&lt;InflowLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="ConditionGroup" PropertyType="ConditionGroup" />
+                        <cdm:PropertyMeta Name="InflowQty" PropertyType="double" />
+                        <cdm:PropertyMeta Name="RequireEqpCount" PropertyType="double" />
+                        <cdm:PropertyMeta Name="AtRequireEqpCount" PropertyType="double" />
+                        <cdm:PropertyMeta Name="AvgTact" PropertyType="double" />
+                        <cdm:PropertyMeta Name="MinTact" PropertyType="double" />
+                        <cdm:PropertyMeta Name="MaxTact" PropertyType="double" />
+                        <cdm:PropertyMeta Name="TargetQty" PropertyType="double" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.Targets.Sum(x =&gt; x.CurrentQty)</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="AvgRunTime" PropertyType="double" IsConst="True">
+                          <DefaultValue>
+                            <String>= (this.InflowQty * this.AvgTact) / 3600</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Targets" PropertyType="HashSet&lt;SEMStepTarget&gt;">
+                          <DefaultValue>
+                            <String>new HashSet&lt;SEMStepTarget&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsTargetUp" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="AssignedEquipmentList" PropertyType="HashSet&lt;AoEquipment&gt;">
+                          <DefaultValue>
+                            <String>new HashSet&lt;AoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="EqpArragneList" PropertyType="HashSet&lt;string&gt;">
+                          <DefaultValue>
+                            <String>new HashSet&lt;string&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Profiles" PropertyType="Dictionary&lt;ProfileEqp, List&lt;ProfileInfo&gt;&gt;">
+                          <DefaultValue>
+                            <String>new Dictionary&lt;ProfileEqp, List&lt;ProfileInfo&gt;&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="ProfileEqps" PropertyType="HashedSet&lt;ProfileEqp&gt;">
+                          <DefaultValue>
+                            <String>new HashedSet&lt;ProfileEqp&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="InflowGroup">
+                  <Content>
+                    <DataClassMeta Name="InflowGroup">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="InflowSteps" PropertyType="Dictionary&lt;string, InflowStep&gt;">
+                          <DefaultValue>
+                            <String>= new Dictionary&lt;string, InflowStep&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="InflowChangeInfo">
+                  <Content>
+                    <DataClassMeta Name="InflowChangeInfo">
+                      <Properties>
+                        <cdm:PropertyMeta Name="AvailableTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="Step" PropertyType="SEMGeneralStep" />
+                        <cdm:PropertyMeta Name="Product" PropertyType="SEMProduct" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="ConditionGroup">
+                  <Content>
+                    <DataClassMeta Name="ConditionGroup">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="StepID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="InflowSteps" PropertyType="HashSet&lt;InflowStep&gt;">
+                          <DefaultValue>
+                            <String>new HashSet&lt;InflowStep&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="AssignedEquipmentList" PropertyType="HashSet&lt;AoEquipment&gt;">
+                          <DefaultValue>
+                            <String>new HashSet&lt;AoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="RequireEqpCount" PropertyType="double" />
+                        <cdm:PropertyMeta Name="AtRequireEqpCount" PropertyType="double" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="InflowSteps">
+                  <Content>
+                    <DataClassMeta Name="InflowSteps">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Steps" PropertyType="List&lt;SEMGeneralStep&gt;" />
+                        <cdm:PropertyMeta Name="ProductID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="EqpID" PropertyType="string" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassFolder Name="Profile">
+                  <Children Capacity="4">
+                    <FDataClassItem Name="ProfileInfo">
+                      <Content>
+                        <DataClassMeta Name="ProfileInfo">
+                          <Properties>
+                            <cdm:PropertyMeta Name="Equipment" PropertyType="ProfileEqp" />
+                            <cdm:PropertyMeta Name="Lot" PropertyType="InflowLot" />
+                            <cdm:PropertyMeta Name="InTime" PropertyType="DateTime" />
+                            <cdm:PropertyMeta Name="OutTime" PropertyType="DateTime" />
+                            <cdm:PropertyMeta Name="Status" PropertyType="string" />
+                          </Properties>
+                        </DataClassMeta>
+                      </Content>
+                    </FDataClassItem>
+                    <FDataClassItem Name="ProfileEqp">
+                      <Content>
+                        <DataClassMeta Name="ProfileEqp">
+                          <Properties>
+                            <cdm:PropertyMeta Name="Equipment" PropertyType="SEMAoEquipment" />
+                            <cdm:PropertyMeta Name="AvailableTime" PropertyType="DateTime" />
+                          </Properties>
+                        </DataClassMeta>
+                      </Content>
+                    </FDataClassItem>
+                  </Children>
+                </FDataClassFolder>
+              </Children>
+            </FDataClassFolder>
+            <FDataClassFolder Name="QTime">
+              <Children Capacity="4">
+                <FDataClassItem Name="QTimeInfo">
+                  <Content>
+                    <DataClassMeta Name="QTimeInfo">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Lot" PropertyType="string" />
+                        <cdm:PropertyMeta Name="List" PropertyType="List&lt;StayHour&gt;" />
+                        <cdm:PropertyMeta Name="MinList" PropertyType="List&lt;StayHour&gt;" />
+                        <cdm:PropertyMeta Name="MaxList" PropertyType="List&lt;StayHour&gt;" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="StayHour">
+                  <Content>
+                    <DataClassMeta Name="StayHour">
+                      <Properties>
+                        <cdm:PropertyMeta Name="SiteID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Product" PropertyType="SEMProduct" />
+                        <cdm:PropertyMeta Name="StepList" PropertyType="List&lt;SEMGeneralStep&gt;">
+                          <DefaultValue>
+                            <String>new List&lt;SEMGeneralStep&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="FromStep" PropertyType="SEMGeneralStep" />
+                        <cdm:PropertyMeta Name="ToStep" PropertyType="SEMGeneralStep" />
+                        <cdm:PropertyMeta Name="QType" PropertyType="QTimeType" />
+                        <cdm:PropertyMeta Name="FromStepOutTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="CurrStepInTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="ToStepInTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="AtfterStepCount" PropertyType="Dictionary&lt;string,int&gt;">
+                          <DefaultValue>
+                            <String>new Dictionary&lt;string,int&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Lot" PropertyType="SEMLot" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+              </Children>
+            </FDataClassFolder>
+            <FDataClassItem Name="SEMEqpJobCondition">
+              <Content>
+                <DataClassMeta Name="SEMEqpJobCondition">
+                  <Properties>
+                    <cdm:PropertyMeta Name="ResourceID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ConditionTypeCode" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ConditionTypeName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ConditionValue" PropertyType="string" />
+                    <cdm:PropertyMeta Name="ConditionValueName" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsWildCode" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="OdsTable" PropertyType="string" />
+                    <cdm:PropertyMeta Name="OdsField" PropertyType="string" />
+                    <cdm:PropertyMeta Name="SetupTime" PropertyType="double" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SemSetupInfo">
+              <Content>
+                <DataClassMeta Name="SemSetupInfo" />
+              </Content>
+            </FDataClassItem>
+            <FDataClassFolder Name="EqpDownSchedule">
+              <Children Capacity="4">
+                <FDataClassItem Name="EqpDownSchedule">
+                  <Content>
+                    <DataClassMeta Name="EqpDownSchedule" />
+                  </Content>
+                </FDataClassItem>
+              </Children>
+            </FDataClassFolder>
+            <FDataClassItem Name="InTarget">
+              <Content>
+                <DataClassMeta IsEntityObject="True" GenerateContainer="True" ContainerType="EntityTable" Name="InTarget">
+                  <Properties>
+                    <cdm:PropertyMeta Name="Product" PropertyType="custom.SEMProduct" />
+                    <cdm:PropertyMeta Name="TargetDate" PropertyType="DateTime" />
+                    <cdm:PropertyMeta Name="TargetQty" PropertyType="int" />
+                    <cdm:PropertyMeta Name="RemainQty" PropertyType="int" />
+                    <cdm:PropertyMeta Name="MoPlan" PropertyType="custom.SEMGeneralMoPlan" />
+                  </Properties>
+                  <ViewInfo>
+                    <cdm:DataViewInfo>
+                      <Items Capacity="4">
+                        <cdm:DataViewItem Name="View" IndexType="Hashtable">
+                          <Keys Capacity="4">
+                            <String>Product</String>
+                          </Keys>
+                        </cdm:DataViewItem>
+                      </Items>
+                    </cdm:DataViewInfo>
+                  </ViewInfo>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="SEMJobCondition">
+              <Content>
+                <DataClassMeta GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="SEMJobCondition" Description="작업 조건">
+                  <Properties>
+                    <cdm:PropertyMeta Name="ConditionCode" PropertyType="string" Description="ex) C00000001" />
+                    <cdm:PropertyMeta Name="ConditionName" PropertyType="string" Description="ex) 기종" />
+                    <cdm:PropertyMeta Name="Table" PropertyType="string" Description="ex) FP_I_PRODUCT" />
+                    <cdm:PropertyMeta Name="Field" PropertyType="string" Description="ex) PRODUCT_ID" />
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassItem Name="DelayShortInfo">
+              <Content>
+                <DataClassMeta Name="DelayShortInfo" Description="Lot의 납기 충족 관련 정보를 기록&#xD;&#xA;lot과 1:1 관계">
+                  <Properties>
+                    <cdm:PropertyMeta Name="LotID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="DemandID" PropertyType="string" />
+                    <cdm:PropertyMeta Name="PegLotQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="PegDemandQty" PropertyType="double" />
+                    <cdm:PropertyMeta Name="PlanState" PropertyType="string" />
+                    <cdm:PropertyMeta Name="IsLeadTimeLate" PropertyType="bool" />
+                    <cdm:PropertyMeta Name="DelayDay" PropertyType="double" />
+                    <cdm:PropertyMeta Name="LotCompleteTime" PropertyType="DateTime">
+                      <DefaultValue>
+                        <String>=DateTime.MinValue</String>
+                      </DefaultValue>
+                    </cdm:PropertyMeta>
+                  </Properties>
+                </DataClassMeta>
+              </Content>
+            </FDataClassItem>
+            <FDataClassFolder Name="JobChangeAgent">
+              <Children Capacity="16">
+                <FDataClassItem Name="SEMWorkStep">
+                  <Content>
+                    <DataClassMeta Name="SEMWorkStep">
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="css:WorkStep" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="JobConditionGroup" PropertyType="JobConditionGroup" />
+                        <cdm:PropertyMeta Name="JobGroupKey" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.JobConditionGroup.Key</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="WorkGroup" PropertyType="SEMWorkGroup" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.Group as SEMWorkGroup</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="GroupKey" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.WorkGroup.GroupKey</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="StepKey" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.Key.ToString()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="TotalWips" PropertyType="HashSet&lt;SEMLot&gt;">
+                          <DefaultValue>
+                            <String>=new HashSet&lt;SEMLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsResFix" PropertyType="bool" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.WorkGroup.IsResFix</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="WsData" PropertyType="WorkStepData" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.Data as WorkStepData</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="ProfileListi" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsDummy" PropertyType="bool">
+                          <DefaultValue>
+                            <String>false</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="SEMWorkLot">
+                  <Content>
+                    <DataClassMeta Name="SEMWorkLot">
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="css:WorkLot" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="LoadableEqp" PropertyType="List&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>=new List&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Lpst" PropertyType="dateTime" />
+                        <cdm:PropertyMeta Name="WorkStep" PropertyType="SEMWorkStep" />
+                        <cdm:PropertyMeta Name="IsAdvanced" PropertyType="bool">
+                          <DefaultValue>
+                            <String>false</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsArriveWait" PropertyType="bool">
+                          <DefaultValue>
+                            <String>false</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="InAoEqp" PropertyType="SEMAoEquipment" />
+                        <cdm:PropertyMeta Name="LotID" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.Lot.LotID</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Data" PropertyType="WorkLotData">
+                          <DefaultValue>
+                            <String>= new WorkLotData()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="SEMWorkGroup">
+                  <Content>
+                    <DataClassMeta Name="SEMWorkGroup">
+                      <Orders1>Steps,Agent,Factory,Key,GroupKey,JobConditionKey,JobConditionGroup,Ordered,Data,IsResFix,FixedResource</Orders1>
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="css:WorkGroup" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="GroupKey" PropertyType="string" />
+                        <cdm:PropertyMeta Name="JobConditionKey" PropertyType="string" />
+                        <cdm:PropertyMeta Name="JobConditionGroup" PropertyType="JobConditionGroup" />
+                        <cdm:PropertyMeta Name="IsResFix" PropertyType="bool">
+                          <DefaultValue>
+                            <String>false</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="FixedResource" PropertyType="SEMEqp" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="SEMWorkEqp">
+                  <Content>
+                    <DataClassMeta Name="SEMWorkEqp">
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="css:WorkEqp" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="Profilesi" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>=new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsProfileDonei" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="WorkStepi" PropertyType="SEMWorkStep" IsConst="True">
+                          <DefaultValue>
+                            <String>= this.Step as SEMWorkStep</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="DecisionTypei" PropertyType="OperationType" />
+                        <cdm:PropertyMeta Name="DueStatei" PropertyType="string" />
+                        <cdm:PropertyMeta Name="EqpIDi" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.Target.EqpID</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="WorkStepData">
+                  <Content>
+                    <DataClassMeta Name="WorkStepData">
+                      <Properties>
+                        <cdm:PropertyMeta Name="DecidedOperationType" PropertyType="Mozart.SeePlan.Simulation.OperationType" />
+                        <cdm:PropertyMeta Name="DecisionReason" PropertyType="string" />
+                        <cdm:PropertyMeta Name="WorkLoadHour" PropertyType="double" />
+                        <cdm:PropertyMeta Name="CurrentProfileEnd" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="DecisionLogs" PropertyType="List&lt;output.DECISION_LOG&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;output.DECISION_LOG&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="EqpUpCount" PropertyType="int" />
+                        <cdm:PropertyMeta Name="DownEqp" PropertyType="string" />
+                        <cdm:PropertyMeta Name="UpEqpFilterLog" PropertyType="string" />
+                        <cdm:PropertyMeta Name="UpEqpSortLog" PropertyType="string" />
+                        <cdm:PropertyMeta Name="CheckUpEqp" PropertyType="string" />
+                        <cdm:PropertyMeta Name="CheckUpPrfileEnd" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="CheckUpWorkLoadHr" PropertyType="double" />
+                        <cdm:PropertyMeta Name="UpProfileEnd" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="UpWorkLoadHr" PropertyType="double" />
+                        <cdm:PropertyMeta Name="UpTargetEqpCnt" PropertyType="int" />
+                        <cdm:PropertyMeta Name="UpFilterEqpCnt" PropertyType="int" />
+                        <cdm:PropertyMeta Name="IsWipUp" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="IsTargetUp" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="Priority" PropertyType="double" />
+                        <cdm:PropertyMeta Name="PriorityLog" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Capa" PropertyType="double" />
+                        <cdm:PropertyMeta Name="DueDate" PropertyType="DateTime">
+                          <DefaultValue>
+                            <String>= DateTime.MaxValue</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsLotArrange" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="MinGapDay" PropertyType="double" />
+                        <cdm:PropertyMeta Name="MaxGapDay" PropertyType="double" />
+                        <cdm:PropertyMeta Name="InflowWipQty" PropertyType="double" />
+                        <cdm:PropertyMeta Name="InflowDemandQty" PropertyType="double" />
+                        <cdm:PropertyMeta Name="InflowWipCnt" PropertyType="int">
+                          <DefaultValue>
+                            <String>0</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="InflowWips" PropertyType="List&lt;string&gt;">
+                          <DefaultValue>
+                            <String>=new List&lt;string&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="FastLot" PropertyType="WorkLot" />
+                        <cdm:PropertyMeta Name="Lpst" PropertyType="DateTime">
+                          <DefaultValue>
+                            <String>= DateTime.MaxValue</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="NeededCapa" PropertyType="double" />
+                        <cdm:PropertyMeta Name="CapaDetail" PropertyType="string" />
+                        <cdm:PropertyMeta Name="DelayLots" PropertyType="List&lt;WorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;WorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="NormalLots" PropertyType="List&lt;WorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;WorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="PrecedeLots" PropertyType="List&lt;WorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;WorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="LoadedEqpCount" PropertyType="int" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.LoadedEqpList.Count()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="LoadedEqpList" PropertyType="List&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="InflowFastLot" PropertyType="SEMWorkLot" Description="유입예정인 lot중 가장 빨리 도착하는 lot" />
+                        <cdm:PropertyMeta Name="InflowFenceLots" PropertyType="List&lt;WorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;WorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="UpMaker" PropertyType="SEMWorkLot" />
+                        <cdm:PropertyMeta Name="Profiles" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>=new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="MainProfile" PropertyType="Profile" />
+                        <cdm:PropertyMeta Name="Phase" PropertyType="int" />
+                        <cdm:PropertyMeta Name="AvailWips" PropertyType="List&lt;SEMWorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;SEMWorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="JobConditionGroup">
+                  <Content>
+                    <DataClassMeta GenerateContainer="True" ContainerType="Dictionary" ContainerKeys="string" Name="JobConditionGroup">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="StepKey" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Groups" PropertyType="HashSet&lt;SEMWorkGroup&gt;">
+                          <DefaultValue>
+                            <String>= new HashSet&lt;SEMWorkGroup&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Steps" PropertyType="HashSet&lt;SEMWorkStep&gt;">
+                          <DefaultValue>
+                            <String>= new HashSet&lt;SEMWorkStep&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="LoadableEqps" PropertyType="HashSet&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>= new HashSet&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="LastJobEqps" PropertyType="HashSet&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>= new HashSet&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Profiles" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Data" PropertyType="JobGroupData" />
+                        <cdm:PropertyMeta Name="InitLoadedEqps" PropertyType="HashSet&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>= new HashSet&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="SEMWorkAgent">
+                  <Content>
+                    <DataClassMeta Name="SEMWorkAgent">
+                      <BaseClass>
+                        <cdm:ReflectedBaseTypeInfo TargetType="css:WorkAgent" />
+                      </BaseClass>
+                      <Properties>
+                        <cdm:PropertyMeta Name="JobConditionGroups" PropertyType="List&lt;JobConditionGroup&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;JobConditionGroup&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="DummyWorkSteps" PropertyType="Dictionary&lt;string, SEMWorkStep&gt;">
+                          <DefaultValue>
+                            <String>= new Dictionary&lt;string, SEMWorkStep&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="EqpAssignInfo">
+                  <Content>
+                    <DataClassMeta Name="EqpAssignInfo">
+                      <Properties>
+                        <cdm:PropertyMeta Name="EqpID" PropertyType="string" IsConst="True">
+                          <DefaultValue>
+                            <String>=this.Eqp.EqpID</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Eqp" PropertyType="SEMEqp" />
+                        <cdm:PropertyMeta Name="AoEqp" PropertyType="SEMAoEquipment" />
+                        <cdm:PropertyMeta Name="AssignEqp" PropertyType="AssignEqp" />
+                        <cdm:PropertyMeta Name="WorkStep" PropertyType="SEMWorkStep" />
+                        <cdm:PropertyMeta Name="WorkEqp" PropertyType="SEMWorkEqp" />
+                        <cdm:PropertyMeta Name="Result" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Reason" PropertyType="string" />
+                        <cdm:PropertyMeta Name="IsFiltered" PropertyType="bool">
+                          <DefaultValue>
+                            <String>false</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="IsResFix" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="SetupTime" PropertyType="double" />
+                        <cdm:PropertyMeta Name="WaitingTime" PropertyType="double" />
+                        <cdm:PropertyMeta Name="Priority" PropertyType="int" />
+                        <cdm:PropertyMeta Name="DueState" PropertyType="string" />
+                        <cdm:PropertyMeta Name="LpstGapDay" PropertyType="double" />
+                        <cdm:PropertyMeta Name="upWsState" PropertyType="string" />
+                        <cdm:PropertyMeta Name="upWsLpstGapDay" PropertyType="double" />
+                        <cdm:PropertyMeta Name="DueStateLog" PropertyType="string" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="Profile">
+                  <Content>
+                    <DataClassMeta Name="Profile">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Eqp" PropertyType="SEMAoEquipment" />
+                        <cdm:PropertyMeta Name="EqpID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Lot" PropertyType="SEMWorkLot" />
+                        <cdm:PropertyMeta Name="LotID" PropertyType="string" />
+                        <cdm:PropertyMeta Name="InTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="OutTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="EqpWorkStep" PropertyType="SEMWorkStep" Description="Eqp의  WorkStep" />
+                        <cdm:PropertyMeta Name="LotWorkStep" PropertyType="SEMWorkStep" Description="Lot의 WorkStep" />
+                        <cdm:PropertyMeta Name="JobGroup" PropertyType="JobConditionGroup" />
+                        <cdm:PropertyMeta Name="WorkGroup" PropertyType="SEMWorkGroup" />
+                        <cdm:PropertyMeta Name="IsRunningLot" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="WorkLotType" PropertyType="string" />
+                        <cdm:PropertyMeta Name="IsAdvanced" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="Lpst" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="LpstGapDay" PropertyType="double" />
+                        <cdm:PropertyMeta Name="DueState" PropertyType="string" />
+                        <cdm:PropertyMeta Name="LotAvailableTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="WaitingTime" PropertyType="double" />
+                        <cdm:PropertyMeta Name="IsArriveWait" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="IsShort" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="Desc" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Phase" PropertyType="int" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="JobGroupData">
+                  <Content>
+                    <DataClassMeta Name="JobGroupData">
+                      <Properties>
+                        <cdm:PropertyMeta Name="NeedCapa" PropertyType="double" />
+                        <cdm:PropertyMeta Name="Capa" PropertyType="double" />
+                        <cdm:PropertyMeta Name="LoadedEqps" PropertyType="List&lt;SEMAoEquipment&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;SEMAoEquipment&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Wips" PropertyType="List&lt;SEMWorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;SEMWorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="Phase" PropertyType="int" />
+                        <cdm:PropertyMeta Name="Decision" PropertyType="OperationType">
+                          <DefaultValue>
+                            <String>= OperationType.Keep</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="DecisionReason" PropertyType="string">
+                          <DefaultValue>
+                            <String>= "Defult Keep"</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="AvailWips" PropertyType="List&lt;SEMWorkLot&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;SEMWorkLot&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="WorkEqpData">
+                  <Content>
+                    <DataClassMeta Name="WorkEqpData">
+                      <Properties>
+                        <cdm:PropertyMeta Name="WorkStep" PropertyType="SEMWorkStep" />
+                        <cdm:PropertyMeta Name="AvailableTime" PropertyType="DateTime" />
+                        <cdm:PropertyMeta Name="IsProfileDone" PropertyType="bool" />
+                        <cdm:PropertyMeta Name="DueState" PropertyType="string" />
+                        <cdm:PropertyMeta Name="Profiles" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>=new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                        <cdm:PropertyMeta Name="DecisionType" PropertyType="OperationType" />
+                        <cdm:PropertyMeta Name="MainProfile" PropertyType="Profile" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="WorkLotData">
+                  <Content>
+                    <DataClassMeta Name="WorkLotData">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Profiles" PropertyType="List&lt;Profile&gt;">
+                          <DefaultValue>
+                            <String>= new List&lt;Profile&gt;()</String>
+                          </DefaultValue>
+                        </cdm:PropertyMeta>
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+                <FDataClassItem Name="AssignInfo">
+                  <Content>
+                    <DataClassMeta Name="AssignInfo">
+                      <Properties>
+                        <cdm:PropertyMeta Name="Key" PropertyType="string" />
+                        <cdm:PropertyMeta Name="WorkStep" PropertyType="SEMWorkStep" />
+                        <cdm:PropertyMeta Name="SetupTime" PropertyType="double" />
+                        <cdm:PropertyMeta Name="Lpst" PropertyType="dateTime" />
+                      </Properties>
+                    </DataClassMeta>
+                  </Content>
+                </FDataClassItem>
+              </Children>
+            </FDataClassFolder>
+          </Children>
+        </FDataClassFolder>
+      </Children>
+    </FDataClassRoot>
+  </Content>
+</vxml:Document>

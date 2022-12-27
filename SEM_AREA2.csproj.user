@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartProgram>C:\Program Files %28x86%29\VMS\Mozart\Client\Bin\APS_Studio.exe</StartProgram>
+    <StartArguments> -model:"E:\SEM_AP\SEM_AREA2\Generated\SEM_AREA2.vmodel" -dev -noauth</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartArguments> -model:"E:\SEM_AP\SEM_AREA2\Generated\SEM_AREA2.vmodel" -dev -noauth</StartArguments>
+  </PropertyGroup>
+</Project>

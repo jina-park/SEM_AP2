@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<vxml:Document xmlns:vxml="http://www.vms-solutions.com/mozart/vxml/2012/1" xmlns:def="definitions" xmlns:ref="references" ContentType="femap" ContentKey="Pegging/Pegging" xmlns="Mozart.Task.Execution.Design, Version=2021.120.0.19, Culture=neutral, PublicKeyToken=null" xmlns:csd="clr-namespace:Mozart.SeePlan.Design;assembly:Mozart.SeePlan.Design, Version=2021.120.3.9, Culture=neutral, PublicKeyToken=null" xmlns:csd2="clr-namespace:Mozart.SeePlan.Design.Pegging;assembly:Mozart.SeePlan.Design, Version=2021.120.3.9, Culture=neutral, PublicKeyToken=null">
+  <Content>
+    <FActionMap Name="Pegging" InstanceName="Pegging">
+      <Definitions Capacity="16">
+        <FDefinitionCategory Name="-Predefined-">
+          <Children Capacity="3">
+            <FDefinitionEntry Name="COMPARE_PEG_TARGET" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="ComparePegTarget" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference>
+                      <Definition ref:name="COMPARE_PEG_TARGET" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CREATE_INNER_BUCKET_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CreateInnerBucket" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference def:name="CREATE_INNER_BUCKET_DEF1">
+                      <Definition ref:name="CREATE_INNER_BUCKET_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="CREATE_OUTER_BUCKET_DEF" def:name="$attr:Name">
+              <ReferenceAction>
+                <FActionEntry Name="CreateOuterBucket" def:name="$attr:Name">
+                  <Children Capacity="1">
+                    <FDefinitionReference def:name="CREATE_OUTER_BUCKET_DEF1">
+                      <Definition ref:name="CREATE_OUTER_BUCKET_DEF" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="PREPARE_TARGET">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="PREPARE_TARGET0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PREPARE_TARGET" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PREPARE_TARGET" MethodName="PREPARE_TARGET0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="PrepareTarget" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="PREPARE_TARGET01">
+                      <Definition ref:name="PREPARE_TARGET0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="PREPARE_WIP">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="PREPARE_WIP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PREPARE_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PREPARE_WIP" MethodName="PREPARE_WIP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="PrepareWip" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="PREPARE_WIP01">
+                      <Definition ref:name="PREPARE_WIP0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="APPLY_YIELD">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_YIELD0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\APPLY_YIELD" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="APPLY_YIELD" MethodName="GET_YIELD0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetYield" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="GET_YIELD01">
+                      <Definition ref:name="GET_YIELD0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="WRITE_TARGET">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="CREATE_STEP_TARGET0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\WRITE_TARGET" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="WRITE_TARGET" MethodName="CREATE_STEP_TARGET0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CreateStepTarget" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="CREATE_STEP_TARGET01">
+                      <Definition ref:name="CREATE_STEP_TARGET0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_STEP_PLAN_KEY0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\WRITE_TARGET" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="WRITE_TARGET" MethodName="GET_STEP_PLAN_KEY0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetStepPlanKey" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="GET_STEP_PLAN_KEY01">
+                      <Definition ref:name="GET_STEP_PLAN_KEY0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="WRITE_TARGET0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\WRITE_TARGET" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="WRITE_TARGET" MethodName="WRITE_TARGET0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="WriteTarget" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="WRITE_TARGET01">
+                      <Definition ref:name="WRITE_TARGET0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="PEG_WIP">
+          <Children Capacity="16">
+            <FDefinitionEntry Name="AVAIL_PEG_QTY0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="AVAIL_PEG_QTY0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="AvailPegQty" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="AVAIL_PEG_QTY01">
+                      <Definition ref:name="AVAIL_PEG_QTY0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference def:name="AVAIL_PEG_QTY11">
+                      <Definition>
+                        <FDefinitionEntry Name="AVAIL_PEG_QTY1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="AVAIL_PEG_QTY1" />
+                          </Code>
+                          <ReferenceAction ref:name="AvailPegQty" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="AVAIL_PEG_QTY1" />
+            <FDefinitionEntry Name="CAN_PEG_MORE0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="CAN_PEG_MORE0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="CanPegMore" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="CAN_PEG_MORE01">
+                      <Definition ref:name="CAN_PEG_MORE0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_WIPS0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="GET_WIPS0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetWips" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="GET_WIPS01">
+                      <Definition ref:name="GET_WIPS0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="IS_REMOVE_EMPTY_TARGET0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="IS_REMOVE_EMPTY_TARGET0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="IsRemoveEmptyTarget" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="IS_REMOVE_EMPTY_TARGET01">
+                      <Definition ref:name="IS_REMOVE_EMPTY_TARGET0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SORT_WIP0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="SORT_WIP0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="SortWip" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="SORT_WIP01">
+                      <Definition ref:name="SORT_WIP0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference def:name="SORT_WIP11">
+                      <Definition>
+                        <FDefinitionEntry Name="SORT_WIP1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="SORT_WIP1" />
+                          </Code>
+                          <ReferenceAction ref:name="SortWip" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="SORT_WIP1" />
+            <FDefinitionEntry Name="UPDATE_PEG_INFO0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="UPDATE_PEG_INFO0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="UpdatePegInfo" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="UPDATE_PEG_INFO01">
+                      <Definition ref:name="UPDATE_PEG_INFO0" />
+                    </FDefinitionReference>
+                    <FDefinitionReference def:name="UPDATE_PEG_INFO11">
+                      <Definition>
+                        <FDefinitionEntry Name="UPDATE_PEG_INFO1" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="UPDATE_PEG_INFO1" />
+                          </Code>
+                          <ReferenceAction ref:name="UpdatePegInfo" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="UPDATE_PEG_INFO1" />
+            <FDefinitionEntry Name="WRITE_PEG0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\PEG_WIP" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="PEG_WIP" MethodName="WRITE_PEG0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="WritePeg" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="WRITE_PEG01">
+                      <Definition ref:name="WRITE_PEG0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="SHIFT_TAT">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="GET_TARGET_TAT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\SHIFT_TAT" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="SHIFT_TAT" MethodName="GET_TARGET_TAT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetTargetTat" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="GET_TARGET_TAT01">
+                      <Definition ref:name="GET_TARGET_TAT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_TAT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\SHIFT_TAT" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="SHIFT_TAT" MethodName="GET_TAT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetTat" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="GET_TAT01">
+                      <Definition ref:name="GET_TAT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="USE_TARGET_TAT0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\SHIFT_TAT" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="SHIFT_TAT" MethodName="USE_TARGET_TAT0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="UseTargetTat" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="USE_TARGET_TAT01">
+                      <Definition ref:name="USE_TARGET_TAT0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Main">
+          <Children Capacity="8">
+            <FDefinitionEntry Name="COMPAREPEGPART" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="COMPAREPEGPART" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="COMPAREPEGTARGET" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="COMPAREPEGTARGET" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GETLASTPEGGINGSTEP" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="GETLASTPEGGINGSTEP" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GETPREVPEGGINGSTEP" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="GETPREVPEGGINGSTEP" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="ONENDFLOW" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="ONENDFLOW" />
+              </Code>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="SPLITPEGPART" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="SPLITPEGPART" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="IsOut">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="SelectCase_IsOut" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="SelectCase_IsOut" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="CHANGE_PART">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="APPLY_PART_CHANGE_INFO0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\CHANGE_PART" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="CHANGE_PART" MethodName="APPLY_PART_CHANGE_INFO0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="ApplyPartChangeInfo" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="APPLY_PART_CHANGE_INFO01">
+                      <Definition ref:name="APPLY_PART_CHANGE_INFO0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry Name="GET_PART_CHANGE_INFOS0" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\CHANGE_PART" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="CHANGE_PART" MethodName="GET_PART_CHANGE_INFOS0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="GetPartChangeInfos" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference Disabled="True" def:name="GET_PART_CHANGE_INFOS01">
+                      <Definition ref:name="GET_PART_CHANGE_INFOS0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="IsIn">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="SelectCase_IsIn" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Main" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Main" MethodName="SelectCase_IsIn" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="WRITE_UNPEG">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="WRITE_REMAINDEMAND" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\WRITE_UNPEG" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="WRITE_UNPEG" MethodName="WRITE_REMAINDEMAND" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="WriteUnpeg" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference def:name="WRITE_UNPEG01">
+                      <Definition>
+                        <FDefinitionEntry Name="WRITE_UNPEG0" def:name="$attr:Name">
+                          <Code>
+                            <CodeInfo Path="Logic\Pegging\WRITE_UNPEG" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="WRITE_UNPEG" MethodName="WRITE_UNPEG0" />
+                          </Code>
+                          <ReferenceAction ref:name="WriteUnpeg" />
+                        </FDefinitionEntry>
+                      </Definition>
+                    </FDefinitionReference>
+                    <FDefinitionReference def:name="WRITE_REMAINDEMAND1">
+                      <Definition ref:name="WRITE_REMAINDEMAND" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+            <FDefinitionEntry ref:name="WRITE_UNPEG0" />
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="Rules">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="ON_END_INITIALIZE" def:name="$attr:Name">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\Rules" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="Rules" MethodName="ON_END_INITIALIZE" />
+              </Code>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+        <FDefinitionCategory Name="ModelRun" />
+        <FDefinitionCategory Name="BUILD_INPLAN">
+          <Children Capacity="4">
+            <FDefinitionEntry Name="BUILD_IN_PLAN0" def:name="$attr:Name" Description="">
+              <Code>
+                <CodeInfo Path="Logic\Pegging\BUILD_INPLAN" NamespaceName="SEM_AREA.Logic.Pegging" ClassName="BUILD_INPLAN" MethodName="BUILD_IN_PLAN0" />
+              </Code>
+              <ReferenceAction>
+                <FActionEntry Name="BuildInPlan" def:name="$attr:Name">
+                  <Children Capacity="4">
+                    <FDefinitionReference>
+                      <Definition ref:name="BUILD_IN_PLAN0" />
+                    </FDefinitionReference>
+                  </Children>
+                </FActionEntry>
+              </ReferenceAction>
+            </FDefinitionEntry>
+          </Children>
+        </FDefinitionCategory>
+      </Definitions>
+      <Privates Name="-Predefined-">
+        <Children Capacity="13">
+          <FActionComponent Name="PEG_WIP">
+            <Option />
+            <Children Capacity="7">
+              <FActionEntry ref:name="GetWips" />
+              <FActionEntry ref:name="SortWip" />
+              <FActionEntry ref:name="CanPegMore" />
+              <FActionEntry ref:name="AvailPegQty" />
+              <FActionEntry ref:name="UpdatePegInfo" />
+              <FActionEntry ref:name="WritePeg" />
+              <FActionEntry ref:name="IsRemoveEmptyTarget" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="SHIFT_TAT">
+            <Option />
+            <Children Capacity="4">
+              <FActionEntry ref:name="GetTat" />
+              <FActionEntry ref:name="UseTargetTat" />
+              <FActionEntry ref:name="GetTargetTat" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="WRITE_TARGET">
+            <Option />
+            <Children Capacity="3">
+              <FActionEntry ref:name="WriteTarget" />
+              <FActionEntry ref:name="GetStepPlanKey" />
+              <FActionEntry ref:name="CreateStepTarget" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="APPLY_YIELD">
+            <Option />
+            <Children Capacity="5">
+              <FActionEntry ref:name="GetYield" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="WRITE_UNPEG">
+            <Option />
+            <Children Capacity="1">
+              <FActionEntry ref:name="WriteUnpeg" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="CHANGE_PART">
+            <Option />
+            <Children Capacity="2">
+              <FActionEntry ref:name="GetPartChangeInfos" />
+              <FActionEntry ref:name="ApplyPartChangeInfo" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="SMOOTH_DEMAND">
+            <Option />
+            <Children Capacity="7">
+              <FActionEntry ref:name="CreateInnerBucket" />
+              <FActionEntry ref:name="CreateOuterBucket" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="PREPARE_WIP">
+            <Option />
+            <Children Capacity="1">
+              <FActionEntry ref:name="PrepareWip" />
+            </Children>
+          </FActionComponent>
+          <FActionComponent Name="PREPARE_TARGET">
+            <Option />
+            <Children Capacity="1">
+              <FActionEntry ref:name="PrepareTarget" />
+            </Children>
+          </FActionComponent>
+        </Children>
+      </Privates>
+      <Children Capacity="4">
+        <FActionCategory Name="Pegger">
+          <Children Capacity="2">
+            <FActionComponent Name="ModelRun">
+              <Option />
+              <Children Capacity="10">
+                <FActionEntry ref:name="ComparePegTarget" />
+              </Children>
+            </FActionComponent>
+          </Children>
+        </FActionCategory>
+        <FCustomEntry Name="Rules">
+          <Children Capacity="16">
+            <csd:PredefinedPegRule Name="APPLY_ACT" Description="APPLY_ACT" />
+            <csd:PredefinedPegRule Name="APPLY_YIELD" Description="APPLY_YIELD">
+              <Children Capacity="8">
+                <FActionEntry Name="GetYield">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_YIELD01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="BUILD_INPLAN" Description="BUILD_INPLAN">
+              <Children Capacity="4">
+                <FActionEntry ref:name="BuildInPlan" />
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="CHANGE_PART" Description="CHANGE_PART">
+              <Children Capacity="4">
+                <FActionEntry Name="GetPartChangeInfos">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_PART_CHANGE_INFOS01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="ApplyPartChangeInfo">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="APPLY_PART_CHANGE_INFO01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="FILTER_TARGET" Description="FILTER_TARGET" />
+            <csd:PredefinedPegRule Name="MANIPULATE_DEMAND" Description="MANIPULATE_DEMAND" />
+            <csd:PredefinedPegRule Name="PEG_WIP" Description="PEG_WIP">
+              <Children Capacity="8">
+                <FActionEntry Name="GetWips">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_WIPS01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="SortWip">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="SORT_WIP01" />
+                    <FDefinitionReference ref:name="SORT_WIP11" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="CanPegMore">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="CAN_PEG_MORE01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="AvailPegQty">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="AVAIL_PEG_QTY01" />
+                    <FDefinitionReference ref:name="AVAIL_PEG_QTY11" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="UpdatePegInfo">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="UPDATE_PEG_INFO01" />
+                    <FDefinitionReference ref:name="UPDATE_PEG_INFO11" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="WritePeg">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="WRITE_PEG01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="IsRemoveEmptyTarget">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="IS_REMOVE_EMPTY_TARGET01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="PREPARE_TARGET" Description="PREPARE_TARGET">
+              <Children Capacity="4">
+                <FActionEntry Name="PrepareTarget">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="PREPARE_TARGET01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="PREPARE_WIP" Description="PREPARE_WIP">
+              <Children Capacity="4">
+                <FActionEntry Name="PrepareWip">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="PREPARE_WIP01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="SHIFT_TAT" Description="SHIFT_TAT">
+              <Children Capacity="4">
+                <FActionEntry Name="GetTat">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_TAT01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="UseTargetTat">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="USE_TARGET_TAT01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="GetTargetTat">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_TARGET_TAT01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="SMOOTH_DEMAND" Description="SMOOTH_DEMAND">
+              <Children Capacity="8">
+                <FActionEntry Name="CreateInnerBucket">
+                  <Children Capacity="1">
+                    <FDefinitionReference ref:name="CREATE_INNER_BUCKET_DEF1" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="CreateOuterBucket">
+                  <Children Capacity="1">
+                    <FDefinitionReference ref:name="CREATE_OUTER_BUCKET_DEF1" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="WRITE_TARGET" Description="WRITE_TARGET">
+              <Children Capacity="4">
+                <FActionEntry Name="WriteTarget">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="WRITE_TARGET01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="GetStepPlanKey">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="GET_STEP_PLAN_KEY01" />
+                  </Children>
+                </FActionEntry>
+                <FActionEntry Name="CreateStepTarget">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="CREATE_STEP_TARGET01" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PredefinedPegRule Name="WRITE_UNPEG" Description="WRITE_UNPEG">
+              <Children Capacity="4">
+                <FActionEntry Name="WriteUnpeg">
+                  <Children Capacity="4">
+                    <FDefinitionReference ref:name="WRITE_UNPEG01" />
+                    <FDefinitionReference ref:name="WRITE_REMAINDEMAND1" />
+                  </Children>
+                </FActionEntry>
+              </Children>
+            </csd:PredefinedPegRule>
+            <csd:PegRuleInstance>
+              <Definition ref:name="ON_END_INITIALIZE" />
+            </csd:PegRuleInstance>
+          </Children>
+        </FCustomEntry>
+        <FCustomEntry Name="Stages">
+          <Config>
+            <csd:PegStagePropList Capacity="4">
+              <csd:PegStagePropInfo Description="" Name="IsRun" TypeEnum="Boolean" />
+              <csd:PegStagePropInfo Description="" Name="InOutType" TypeEnum="String" />
+            </csd:PegStagePropList>
+          </Config>
+          <Children Capacity="8">
+            <csd:PegStageInstance Name="Int">
+              <Option />
+              <Children Capacity="4">
+                <FPredefinedReference Name="PREPARE_TARGET" InstanceName="PREPARE_TARGET" Description="Prepare stage target" />
+                <FPredefinedReference Name="PREPARE_WIP" InstanceName="PREPARE_WIP" Description="Prepare target wip" />
+                <csd:PegRuleReference InstanceName="ON_END_INITIALIZE">
+                  <Definition ref:name="ON_END_INITIALIZE" />
+                </csd:PegRuleReference>
+              </Children>
+            </csd:PegStageInstance>
+            <csd:PegStageInstance Name="RunPeg">
+              <Option>
+                <Values>
+                  <Entry>
+                    <String>IsRun</String>
+                    <Boolean>True</Boolean>
+                  </Entry>
+                </Values>
+              </Option>
+              <Children Capacity="8">
+                <FPredefinedReference Name="WRITE_TARGET" InstanceName="WRITE_OUT_TARGET" Description="Write target" />
+                <FPredefinedReference Name="APPLY_YIELD" InstanceName="APPLY_YIELD" Description="Apply yield" />
+                <FPredefinedReference Name="PEG_WIP" InstanceName="PEG_RUN_WIP" Description="Pegging wip" />
+                <FPredefinedReference Name="SHIFT_TAT" InstanceName="SHIFT_RUN_TAT" Description="Apply tat" />
+              </Children>
+            </csd:PegStageInstance>
+            <csd:PegStageInstance Name="PostProcess">
+              <Option />
+              <Children Capacity="4">
+                <FPredefinedReference Name="WRITE_UNPEG" InstanceName="WRITE_UNPEG" Description="Write unpeg" />
+                <FPredefinedReference Name="BUILD_INPLAN" InstanceName="BUILD_INPLAN" Description="Build InPlan from Target for input step" />
+              </Children>
+            </csd:PegStageInstance>
+            <csd:PegStageInstance Name="WaitPeg">
+              <Option>
+                <Values>
+                  <Entry>
+                    <String>IsRun</String>
+                    <Boolean>False</Boolean>
+                  </Entry>
+                </Values>
+              </Option>
+              <Children Capacity="4">
+                <FPredefinedReference Name="CHANGE_PART" InstanceName="CHANGE_PART" Description="Change part" />
+                <FPredefinedReference Name="WRITE_TARGET" InstanceName="WRITE_IN_TARGET" Description="Write target" />
+                <FPredefinedReference Name="PEG_WIP" InstanceName="PEG_WAIT_WIP" Description="Pegging wip" />
+                <FPredefinedReference Name="SHIFT_TAT" InstanceName="SHIFT_WAIT_TAT" Description="Apply tat" />
+              </Children>
+            </csd:PegStageInstance>
+            <csd:PegStageInstance Name="OutStage">
+              <Option>
+                <Values>
+                  <Entry>
+                    <String>InOutType</String>
+                    <String>OUT</String>
+                  </Entry>
+                  <Entry>
+                    <String>IsRun</String>
+                    <Boolean>True</Boolean>
+                  </Entry>
+                </Values>
+              </Option>
+              <Children Capacity="4">
+                <FPredefinedReference Name="WRITE_TARGET" InstanceName="WRITE_TARGET" Description="Write target" />
+              </Children>
+            </csd:PegStageInstance>
+            <csd:PegStageInstance Name="InStage">
+              <Option>
+                <Values>
+                  <Entry>
+                    <String>IsRun</String>
+                    <Boolean>False</Boolean>
+                  </Entry>
+                  <Entry>
+                    <String>InOutType</String>
+                    <String>IN</String>
+                  </Entry>
+                </Values>
+              </Option>
+              <Children Capacity="4">
+                <FPredefinedReference Name="WRITE_TARGET" InstanceName="WRITE_TARGET" Description="Write target" />
+              </Children>
+            </csd:PegStageInstance>
+          </Children>
+        </FCustomEntry>
+        <FCustomEntry Name="Models">
+          <Children Capacity="4">
+            <csd2:FPeggerModel Name="PeggerModdel" IsActive="True">
+              <Children Capacity="4">
+                <csd2:FPeggerArea Name="Start" AreaType="Stock" def:name="$attr:Name" Order="1">
+                  <Nexts Capacity="1">
+                    <csd2:FPeggerArea Name="Area" AreaType="Normal" Order="2" def:name="$attr:Name">
+                      <Prevs Capacity="1">
+                        <csd2:FPeggerArea ref:name="Start" />
+                      </Prevs>
+                      <Children Capacity="4">
+                        <csd2:FPeggerNode Name="Pre" Order="1">
+                          <FixedFunctions Capacity="3">
+                            <csd2:FPeggerFunc Name="ComparePegPart" FuncType="Comparer" />
+                            <csd2:FPeggerFunc Name="OnBeginFlow" FuncType="OnBeginFlow" />
+                            <csd2:FPeggerFunc Name="OnEndFlow" FuncType="OnEndFlow" />
+                          </FixedFunctions>
+                          <Children Capacity="4">
+                            <csd2:FPeggerStage Name="Int" StageTemplateName="Int" Order="1" />
+                          </Children>
+                        </csd2:FPeggerNode>
+                        <csd2:FPeggerNode Name="Main" IsProcessFlow="True" Order="2">
+                          <FixedFunctions Capacity="5">
+                            <csd2:FPeggerFunc Name="ComparePegPart" FuncType="Comparer">
+                              <Method ref:name="COMPAREPEGPART" />
+                            </csd2:FPeggerFunc>
+                            <csd2:FPeggerFunc Name="ComparePegTarget" FuncType="TargetComparer">
+                              <Method ref:name="COMPAREPEGTARGET" />
+                            </csd2:FPeggerFunc>
+                            <csd2:FPeggerFunc Name="CompareAlign" FuncType="CompareAlign" />
+                            <csd2:FPeggerFunc Name="OnBeginFlow" FuncType="OnBeginFlow" />
+                            <csd2:FPeggerFunc Name="OnEndFlow" FuncType="OnEndFlow">
+                              <Method ref:name="ONENDFLOW" />
+                            </csd2:FPeggerFunc>
+                          </FixedFunctions>
+                          <Children Capacity="16">
+                            <csd2:FPeggerFunc Name="GetLastPeggingStep" FuncType="LastStep" Order="1">
+                              <Method ref:name="GETLASTPEGGINGSTEP" />
+                            </csd2:FPeggerFunc>
+                            <csd2:FPeggerFunc Name="SplitPegPart" FuncType="Splitter" Order="2">
+                              <Method ref:name="SPLITPEGPART" />
+                            </csd2:FPeggerFunc>
+                            <csd2:FPeggerSwitchPoint Name="IsOut_StartPoint" Order="3" />
+                            <csd2:FPeggerSwitch Name="IsOut" Order="4">
+                              <SwitchAction>
+                                <csd2:FPeggerFunc Name="SelectCase" FuncType="SelectCase">
+                                  <Method ref:name="SelectCase_IsOut" />
+                                </csd2:FPeggerFunc>
+                              </SwitchAction>
+                              <Children Capacity="4">
+                                <csd2:FPeggerCaseNode Name="Default" AttachTo="IsOut_EndPoint" />
+                                <csd2:FPeggerCaseNode Name="OUT" AttachTo="IsOut_EndPoint" Order="1">
+                                  <Children Capacity="4">
+                                    <csd2:FPeggerStage Name="OutStage" StageTemplateName="OutStage" Order="1" />
+                                  </Children>
+                                </csd2:FPeggerCaseNode>
+                              </Children>
+                            </csd2:FPeggerSwitch>
+                            <csd2:FPeggerSwitchPoint Name="IsOut_EndPoint" Order="5" />
+                            <csd2:FPeggerStage Name="RunPeg" StageTemplateName="RunPeg" Order="6" />
+                            <csd2:FPeggerStage Name="WaitPeg" StageTemplateName="WaitPeg" Order="7" />
+                            <csd2:FPeggerSwitchPoint Name="IsIn_StartPoint" Order="8" />
+                            <csd2:FPeggerSwitch Name="IsIn" Order="9">
+                              <SwitchAction>
+                                <csd2:FPeggerFunc Name="SelectCase" FuncType="SelectCase">
+                                  <Method ref:name="SelectCase_IsIn" />
+                                </csd2:FPeggerFunc>
+                              </SwitchAction>
+                              <Children Capacity="4">
+                                <csd2:FPeggerCaseNode Name="Default" AttachTo="IsIn_EndPoint" />
+                                <csd2:FPeggerCaseNode Name="IN" AttachTo="IsIn_EndPoint" Order="1">
+                                  <Children Capacity="4">
+                                    <csd2:FPeggerStage Name="InStage" StageTemplateName="InStage" Order="1" />
+                                  </Children>
+                                </csd2:FPeggerCaseNode>
+                              </Children>
+                            </csd2:FPeggerSwitch>
+                            <csd2:FPeggerSwitchPoint Name="IsIn_EndPoint" Order="10" />
+                            <csd2:FPeggerFunc Name="GetPrevPeggingStep" FuncType="PrevStep" Order="11">
+                              <Method ref:name="GETPREVPEGGINGSTEP" />
+                            </csd2:FPeggerFunc>
+                          </Children>
+                        </csd2:FPeggerNode>
+                        <csd2:FPeggerNode Name="Post" Order="3">
+                          <FixedFunctions Capacity="3">
+                            <csd2:FPeggerFunc Name="ComparePegPart" FuncType="Comparer" />
+                            <csd2:FPeggerFunc Name="OnBeginFlow" FuncType="OnBeginFlow" />
+                            <csd2:FPeggerFunc Name="OnEndFlow" FuncType="OnEndFlow" />
+                          </FixedFunctions>
+                          <Children Capacity="4">
+                            <csd2:FPeggerStage Name="PostProcess" StageTemplateName="PostProcess" Order="1" />
+                          </Children>
+                        </csd2:FPeggerNode>
+                      </Children>
+                    </csd2:FPeggerArea>
+                  </Nexts>
+                </csd2:FPeggerArea>
+                <csd2:FPeggerArea ref:name="Area" />
+              </Children>
+            </csd2:FPeggerModel>
+          </Children>
+        </FCustomEntry>
+      </Children>
+    </FActionMap>
+  </Content>
+</vxml:Document>
